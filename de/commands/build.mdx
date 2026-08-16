@@ -1,6 +1,6 @@
 ---
 title: "build"
-description: "Transpiliert TypeScript-Contracts nach Solidity und kompiliert mit solc."
+description: "Parst TypeScript-Contracts, emittiert Solidity, kompiliert mit solc und führt die Scriipture-Security-Pipeline in einem End-to-End-Build-Befehl aus."
 ---
 
 End-to-End-Build: Er parst die TS-Quellen, gibt Solidity aus und kompiliert zu Bytecode. Führt die [Security-Pipeline](/concepts/security-pipeline) aus, sofern `--skip-validate` nicht angegeben wird.
