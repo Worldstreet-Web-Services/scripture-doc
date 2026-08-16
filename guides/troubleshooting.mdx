@@ -1,0 +1,32 @@
+---
+title: "Troubleshooting"
+description: "Common issues and how to resolve them."
+---
+
+<AccordionGroup>
+  <Accordion title="`solc` not found">
+    Run `npx scriipture doctor --fix` to install a compatible `solc`. See [`doctor`](/commands/doctor).
+  </Accordion>
+
+  <Accordion title="Slither is missing">
+    Install with `pipx install slither-analyzer` or run `doctor --fix`. Without Slither, the static-analysis gate is skipped with a warning.
+  </Accordion>
+
+  <Accordion title="`localhost:7654` is already in use">
+    Another process is bound to the bridge port. Use `scriipture deploy --browser --bridge-port 7655`. See [Browser wallet](/concepts/browser-wallet).
+  </Accordion>
+
+  <Accordion title="Invariant fails with a counter-example">
+    The pipeline prints the input trace that broke your invariant. Reproduce with `scriipture test --seed <n>` where `n` is the seed from the failure output. See [Writing an invariant](/guides/writing-an-invariant).
+  </Accordion>
+
+  <Accordion title="Deployed bytecode does not match verify">
+    Almost always an optimizer or `via-ir` mismatch. Re-run [`compile`](/commands/compile) with the exact flags you deployed with, then [`verify`](/commands/verify) again.
+  </Accordion>
+
+  <Accordion title="`@onlyOwner` compiles but reverts on call">
+    You called from an account that is not the deployer. `Ownable(msg.sender)` is set in the constructor. Transfer ownership with `transferOwnership(newOwner)` or deploy from the intended admin account.
+  </Accordion>
+</AccordionGroup>
+
+Still stuck? Open an issue in the [Scriipture repo](https://github.com/Worldstreet-Web-Services/scripture/issues).

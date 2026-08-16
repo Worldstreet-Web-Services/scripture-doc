@@ -1,0 +1,39 @@
+---
+title: "Writing an invariant"
+description: "Declare properties that must always hold and let Scriipture prove them."
+---
+
+Invariants are boolean methods decorated with `@invariant`. The [security pipeline](/concepts/security-pipeline) executes them against symbolic inputs during `validate`.
+
+## Example: total supply matches balances
+
+<CodeGroup>
+
+```ts MyToken.ts
+import { storage, invariant, Address } from "scriipture";
+
+export class MyToken {
+  @storage totalSupply: bigint = 0n;
+  @storage balanceOf: Map<Address, bigint> = new Map();
+
+  @invariant
+  supplyMatchesBalances(): boolean {
+    let sum = 0n;
+    for (const [, bal] of this.balanceOf) sum += bal;
+    return sum === this.totalSupply;
+  }
+}
+```
+
+```bash Terminal
+$ npx scriipture validate
+✓ supplyMatchesBalances holds across 10,000 traces
+```
+
+</CodeGroup>
+
+## Guidance
+
+- Keep invariants pure. Read state, do not mutate it.
+- Prefer several small invariants over one large one. Failures are easier to diagnose.
+- Wire counter-example seeds back into your test suite so regressions cannot come back.

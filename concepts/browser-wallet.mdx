@@ -1,0 +1,43 @@
+---
+title: "Browser wallet"
+description: "How `scriipture deploy --browser` signs transactions with MetaMask."
+---
+
+`scriipture deploy --browser` deploys without ever touching a private key on disk. It spawns a short-lived local HTTP server, opens a signing page in your browser, and waits for your wallet to sign the transaction.
+
+## Flow
+
+<Steps>
+  <Step title="CLI spawns bridge">
+    A local server starts on `http://localhost:7654` and stays up for about 30 seconds.
+  </Step>
+  <Step title="Browser opens">
+    Scriipture opens `http://localhost:7654` in your default browser. The page renders the deploy payload (bytecode, chain, args).
+  </Step>
+  <Step title="You sign">
+    Click **Sign and send** in your wallet. MetaMask, Rabby, Frame, Coinbase Wallet, and any EIP-1193 provider work.
+  </Step>
+  <Step title="CLI receives receipt">
+    The browser posts the receipt back to the CLI, the bridge shuts down, and the deployed address prints.
+  </Step>
+</Steps>
+
+```bash
+npx scriipture deploy --browser --chain base-sepolia
+```
+
+<Info>
+  The bridge runs only during a deploy. It binds to `127.0.0.1` and shuts down after the receipt is received or after ~30 seconds.
+</Info>
+
+<Warning>
+  If `localhost:7654` is already bound, use `--bridge-port <port>` to override.
+</Warning>
+
+## When to use it
+
+- You're on a workstation with MetaMask, and you don't want a hot key on disk.
+- You're deploying from a Ledger or Trezor via MetaMask.
+- You're pairing with a teammate and want them to approve the transaction.
+
+For CI or scripted deploys, use [`deploy`](/commands/deploy) with a keystore instead.

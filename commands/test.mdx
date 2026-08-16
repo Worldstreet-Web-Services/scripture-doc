@@ -1,0 +1,26 @@
+---
+title: "test"
+description: "Run the contract test suite."
+---
+
+Executes tests defined in `tests/` against a forked EVM. Tests are plain TypeScript with a `describe` / `it` API.
+
+## Usage
+
+```bash
+npx scriipture test [pattern] [options]
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--fork <chain>` | Fork a specific chain for tests. |
+| `--coverage` | Emit a coverage report. |
+| `--gas` | Emit per-function gas usage. |
+
+## Example
+
+```bash
+npx scriipture test MyToken --gas
+```

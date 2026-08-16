@@ -1,0 +1,21 @@
+---
+title: "audit-pack"
+description: "Bundle everything an auditor needs into a single zip."
+---
+
+Packs the generated Solidity, TS sources, `slither` output, invariant proofs, gas reports, and a `README` for auditors.
+
+## Usage
+
+```bash
+npx scriipture audit-pack <contract> [options]
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--out <path>` | Output archive path. |
+| `--include-tests` | Include the test suite. |
+
+Hand the resulting `.zip` to your auditor. Nothing else required.

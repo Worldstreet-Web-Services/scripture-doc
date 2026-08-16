@@ -1,0 +1,70 @@
+---
+title: "Introduction"
+description: "Write smart contracts in TypeScript. Ship them like you'd ship any Node.js project."
+---
+
+Scriipture lets you write smart contracts in **plain TypeScript**, the same language you already use for your APIs and frontend. No new language to learn. No new tooling. It's just `npm install`, write a class, and deploy.
+
+```bash
+npm install scriipture
+```
+
+## For TypeScript developers, by design
+
+If you know Node.js, you already know 90% of Scriipture. A smart contract is just a class. Methods become functions anyone can call. Class fields become storage. That's the whole model.
+
+```ts Counter.ts
+import { storage } from "scriipture";
+
+export class Counter {
+  @storage count: bigint = 0n;
+
+  increment(): void {
+    this.count += 1n;
+  }
+}
+```
+
+Scriipture handles everything blockchain-specific for you: it generates the low-level contract code, checks it for common bugs, and deploys it via your browser wallet. You never have to leave TypeScript.
+
+## What you get
+
+<CardGroup cols={2}>
+  <Card title="TypeScript all the way" icon="code">
+    Your editor, your linter, your type-checker, your test framework. No new language, no new IDE.
+  </Card>
+
+  <Card title="Safety checks built in" icon="shield-check">
+    Every build runs 9 automatic checks for common contract bugs before you can deploy. Learn more in [Safety checks](/concepts/security-pipeline).
+  </Card>
+
+  <Card title="Deploy from your browser" icon="wallet">
+    Sign deploys with a browser wallet like MetaMask. No private keys in `.env` files. See [How deploys work](/concepts/browser-wallet).
+  </Card>
+
+  <Card title="Works on real networks" icon="network-wired">
+    Ships with support for Ethereum, Base, and Konstellation. See [Supported chains](/concepts/multi-chain).
+  </Card>
+</CardGroup>
+
+## New to smart contracts?
+
+That's fine. Here's the 30-second version:
+
+- A **smart contract** is a program that lives on a blockchain. Once deployed, anyone can call its functions over the internet.
+- A **blockchain** (Ethereum, Base, Konstellation) is a shared database that many computers agree on. Deploying a contract is like `POST`-ing code to that database.
+- A **wallet** (like MetaMask) is your identity. You use it to sign deploys and transactions, the same way you'd use a Google account to sign in.
+
+That's it. You can now read the rest of the docs.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Install" icon="download" href="/install">
+    Two commands and you're set up.
+  </Card>
+
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Deploy your first contract in about 60 seconds.
+  </Card>
+</CardGroup>

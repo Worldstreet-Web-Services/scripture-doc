@@ -1,0 +1,30 @@
+---
+title: "wallet"
+description: "Manage local keystores."
+---
+
+Create, import, and list encrypted keystores used by [`deploy --keystore`](/commands/deploy).
+
+## Subcommands
+
+### `create`
+
+```bash
+npx scriipture wallet create <name>
+```
+
+### `import`
+
+```bash
+npx scriipture wallet import <name> --private-key <hex>
+```
+
+### `list`
+
+```bash
+npx scriipture wallet list
+```
+
+<Warning>
+  Keystores are encrypted at rest but should still be treated as sensitive. Prefer [browser wallet](/concepts/browser-wallet) deploys for anything with real value.
+</Warning>

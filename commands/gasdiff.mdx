@@ -1,0 +1,24 @@
+---
+title: "gasdiff"
+description: "Compare gas usage between two builds and flag regressions."
+---
+
+Runs the test suite against two builds and diffs the gas cost of each function.
+
+## Usage
+
+```bash
+npx scriipture gasdiff --base <ref> --head <ref>
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--base <ref>` | Baseline commit, tag, or artifact. |
+| `--head <ref>` | Comparison commit, tag, or artifact. |
+| `--threshold <pct>` | Fail if any function regresses more than this percent. |
+
+<Tip>
+  Run this on every PR. A one-line `threshold` catches accidental gas blowups.
+</Tip>

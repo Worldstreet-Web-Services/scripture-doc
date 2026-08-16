@@ -1,0 +1,46 @@
+---
+title: "Security pipeline"
+description: "The 9 gates every contract passes through before deploy."
+---
+
+Every `scriipture build`, `validate`, and `deploy` runs the compiled Solidity through a 9-gate pipeline. Any gate can fail the build.
+
+<Steps>
+  <Step title="1. Parser sanity">
+    Confirms TypeScript source parses and every decorator is recognized.
+  </Step>
+  <Step title="2. Type mapping">
+    Verifies every TS type has a valid Solidity mapping. See [Type mapping](/concepts/type-mapping).
+  </Step>
+  <Step title="3. Solidity compile">
+    Runs `solc` with strict settings. Any warning is treated as an error unless whitelisted.
+  </Step>
+  <Step title="4. Slither static analysis">
+    Detects reentrancy, uninitialized storage, shadowed variables, and 90\+ other patterns.
+  </Step>
+  <Step title="5. Invariant checks">
+    Runs any `@invariant` methods against symbolic inputs. See [Writing an invariant](/guides/writing-an-invariant).
+  </Step>
+  <Step title="6. Gas budget">
+    Ensures each function fits its declared gas budget. Comparable to `gasdiff` output between builds.
+  </Step>
+  <Step title="7. Storage layout diff">
+    Warns on incompatible storage layout changes (breaks upgrades).
+  </Step>
+  <Step title="8. Bytecode sanity">
+    Confirms deterministic bytecode across builds and no suspicious opcodes.
+  </Step>
+  <Step title="9. Deploy pre-flight">
+    Simulates the constructor on a forked chain with the intended chain params.
+  </Step>
+</Steps>
+
+<Tip>
+  Skip individual gates with `--skip <gate>` for local iteration. Production deploys always run all nine.
+</Tip>
+
+Related:
+
+- [`validate`](/commands/validate) runs the pipeline without deploying.
+- [`audit`](/commands/audit) and [`audit-pack`](/commands/audit-pack) produce auditor-ready reports.
+- [`gasdiff`](/commands/gasdiff) surfaces gas regressions between builds.

@@ -1,0 +1,23 @@
+---
+title: "verify"
+description: "Verify that a deployed contract's bytecode matches the local build."
+---
+
+Re-fetches the on-chain bytecode for a deployed address and diffs it against the local artifact.
+
+## Usage
+
+```bash
+npx scriipture verify <address> --chain <chain> [options]
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--chain <chain>` | Chain alias or ID. See [Multi-chain](/concepts/multi-chain). |
+| `--artifact <path>` | Local artifact to compare against. |
+
+<Tip>
+  For verifying source on a block explorer (Basescan, Etherscan), see [`verify-source`](/commands/verify-source).
+</Tip>

@@ -1,0 +1,61 @@
+---
+title: "Install"
+description: "Two commands to get Scriipture set up locally."
+---
+
+If you have Node.js installed, you're 90 seconds away from writing your first contract.
+
+## What you need
+
+- **Node.js 18\+** (check with `node -v`)
+- **npm**, **pnpm**, or **yarn**, whichever you already use
+
+That's it. Scriipture will install everything else it needs.
+
+## Install the package
+
+```bash npm
+npm install scriipture
+```
+
+Or install globally so you can run `scriipture` from any folder:
+
+```bash
+npm install -g scriipture
+```
+
+<Note>
+  Prefer pnpm or yarn? `pnpm add scriipture` and `yarn add scriipture` work the same way.
+</Note>
+
+## Run the setup check
+
+Scriipture bundles a `doctor` command that verifies your machine is ready and installs anything missing.
+
+<Steps>
+  <Step title="See what's missing">
+    ```bash
+    npx scriipture doctor
+    ```
+
+    Prints a checklist of the tools Scriipture uses under the hood.
+  </Step>
+  <Step title="Auto-fix">
+    ```bash
+    npx scriipture doctor --fix
+    ```
+
+    Installs the missing pieces for you. Safe to run more than once.
+  </Step>
+  <Step title="Confirm">
+    Run `npx scriipture doctor` again. Every line should be green.
+  </Step>
+</Steps>
+
+<Check>
+  You're set up. Head to the [Quickstart](/quickstart) to deploy your first contract.
+</Check>
+
+<Tip>
+  You don't need to know what tools `doctor` is installing to get started. If you're curious, they're all standard smart-contract tooling (a compiler and a static analyzer). We use them, you don't have to.
+</Tip>

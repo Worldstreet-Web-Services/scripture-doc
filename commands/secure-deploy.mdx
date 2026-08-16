@@ -1,0 +1,24 @@
+---
+title: "secure-deploy"
+description: "Deploy with a full audit trail: bytecode attestation, invariant proofs, and signed metadata."
+---
+
+Runs [`deploy`](/commands/deploy) and additionally produces an audit bundle: bytecode hash, `slither` report, invariant proofs, and a signed metadata JSON pinned to IPFS.
+
+## Usage
+
+```bash
+npx scriipture secure-deploy <contract> --chain <chain> [options]
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--browser` | Sign via browser wallet. |
+| `--ipfs-gateway <url>` | Pin metadata to a custom IPFS gateway. |
+| `--sign-with <key>` | Sign the metadata bundle with a specific key. |
+
+<Note>
+  Use `secure-deploy` for production. Use [`deploy`](/commands/deploy) for testnets and iteration.
+</Note>

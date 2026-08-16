@@ -1,0 +1,97 @@
+---
+title: "Decorators"
+description: "How TypeScript decorators map to Solidity modifiers, visibility, and base contracts."
+---
+
+Scriipture decorators declare modifiers, visibility, storage, and inheritance. Each decorator maps to a specific Solidity construct, and the transpiler injects any required imports and constructor wiring.
+
+## `@onlyOwner`
+
+<CodeGroup>
+
+```ts MyToken.ts
+import { onlyOwner, Address } from "scriipture";
+
+export class MyToken {
+  @onlyOwner
+  mint(to: Address, amount: bigint): void { /* … */ }
+}
+```
+
+```solidity MyToken.sol
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MyToken is Ownable {
+    constructor() Ownable(msg.sender) {}
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        /* … */
+    }
+}
+```
+
+</CodeGroup>
+
+Scriipture imports OpenZeppelin `Ownable`, adds `is Ownable`, and injects `Ownable(msg.sender)` in the constructor.
+
+## `@view`
+
+Marks a function as `view` (no state mutation).
+
+<CodeGroup>
+
+```ts Reader.ts
+export class Reader {
+  @view
+  balanceOf(user: Address): bigint {
+    return this.balances.get(user) ?? 0n;
+  }
+}
+```
+
+```solidity Reader.sol
+function balanceOf(address user) public view returns (uint256) {
+    return balances[user];
+}
+```
+
+</CodeGroup>
+
+## `@payable`
+
+Allows a function to receive Ether.
+
+<CodeGroup>
+
+```ts Vault.ts
+export class Vault {
+  @payable
+  deposit(): void { /* msg.value credited to sender */ }
+}
+```
+
+```solidity Vault.sol
+function deposit() public payable { /* … */ }
+```
+
+</CodeGroup>
+
+## `@nonReentrant`
+
+Guards against reentrancy using OpenZeppelin's `ReentrancyGuard`.
+
+## `@storage`
+
+Declares a persistent state variable. Class fields without `@storage` are compile-time only.
+
+## `@assembly`
+
+Marks a function body as inline Yul/assembly. Passed through verbatim.
+
+## `@invariant`
+
+Declares a contract-level invariant checked by the [security pipeline](/concepts/security-pipeline). See [Writing an invariant](/guides/writing-an-invariant).
+
+<Note>
+  Full source for each decorator lives in the [Scriipture repo](https://github.com/Worldstreet-Web-Services/scripture/blob/main/src/).
+</Note>

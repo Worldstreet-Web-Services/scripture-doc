@@ -1,0 +1,41 @@
+---
+title: "All commands"
+description: "Every CLI subcommand at a glance."
+---
+
+Quick index of every Scriipture CLI subcommand. Follow the links for full option lists.
+
+| Command | Purpose |
+| --- | --- |
+| [`doctor`](/commands/doctor) | Check the toolchain, optionally install missing pieces. |
+| [`init`](/commands/init) | Scaffold a new Scriipture project. |
+| [`build`](/commands/build) | Transpile TS to Solidity and compile. |
+| [`validate`](/commands/validate) | Run the 9-gate security pipeline. |
+| [`verify`](/commands/verify) | Diff on-chain bytecode against a local artifact. |
+| [`compile`](/commands/compile) | Run just the Solidity compile step. |
+| [`deploy`](/commands/deploy) | Deploy a compiled contract. |
+| [`secure-deploy`](/commands/secure-deploy) | Deploy with a full audit trail. |
+| [`verify-source`](/commands/verify-source) | Submit source to a block explorer. |
+| [`audit`](/commands/audit) | Generate a human-readable audit report. |
+| [`audit-pack`](/commands/audit-pack) | Bundle everything an auditor needs. |
+| [`gasdiff`](/commands/gasdiff) | Compare gas usage between two builds. |
+| [`test`](/commands/test) | Run the contract test suite. |
+| [`trace`](/commands/trace) | Replay and inspect a specific transaction. |
+| [`wallet`](/commands/wallet) | Manage local keystores. |
+| [`config`](/commands/config) | Inspect and edit the project configuration. |
+
+## Global flags
+
+Available on every command:
+
+| Flag | Description |
+| --- | --- |
+| `--help` | Show help for the command. |
+| `--version` | Print the installed Scriipture version. |
+| `--json` | Emit machine-readable output where supported. |
+| `--verbose` | Extra logging. |
+| `--cwd <path>` | Run in a different project directory. |
+
+<Note>
+  This page is a summary. Each subcommand's page has the full flag list and examples.
+</Note>

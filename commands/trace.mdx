@@ -1,0 +1,23 @@
+---
+title: "trace"
+description: "Replay and inspect a specific transaction."
+---
+
+Fetches a transaction, replays it against a local fork, and prints a human-readable call trace with decoded arguments and revert reasons.
+
+## Usage
+
+```bash
+npx scriipture trace <tx-hash> --chain <chain> [options]
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--json` | Emit trace as JSON. |
+| `--depth <n>` | Limit call depth in output. |
+
+<Tip>
+  Combine with [`verify-source`](/commands/verify-source) so decoded function names show up in the trace.
+</Tip>

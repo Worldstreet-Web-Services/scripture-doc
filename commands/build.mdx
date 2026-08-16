@@ -1,0 +1,27 @@
+---
+title: "build"
+description: "Transpile TypeScript contracts to Solidity and compile with solc."
+---
+
+End-to-end build: parses TS sources, emits Solidity, and compiles to bytecode. Runs the [security pipeline](/concepts/security-pipeline) unless `--skip-validate` is passed.
+
+## Usage
+
+```bash
+npx scriipture build [options]
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--out <dir>` | Output directory. Defaults to `./build`. |
+| `--only <glob>` | Build only matching contracts. |
+| `--skip-validate` | Skip the security pipeline. |
+| `--optimizer <n>` | `solc` optimizer runs. Defaults to `200`. |
+
+## Example
+
+```bash
+npx scriipture build --optimizer 1000
+```

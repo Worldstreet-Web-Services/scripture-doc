@@ -1,0 +1,22 @@
+---
+title: "verify-source"
+description: "Submit source to a block explorer for public verification."
+---
+
+Uploads the generated Solidity, compiler settings, and constructor args to a block explorer (Etherscan, Basescan, Blockscout).
+
+## Usage
+
+```bash
+npx scriipture verify-source <address> --chain <chain> [options]
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--explorer <name>` | Explorer to submit to. Auto-detected from chain. |
+| `--api-key <key>` | Explorer API key. Also read from env. |
+| `--contract <name>` | Contract name if multiple in the artifact. |
+
+See [Verifying on Basescan](/guides/verifying-on-basescan) for a full walkthrough.

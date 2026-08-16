@@ -1,0 +1,26 @@
+---
+title: "init"
+description: "Scaffold a new Scriipture project."
+---
+
+Creates a project directory with `scriipture.config.ts`, a starter contract, and package scripts wired up.
+
+## Usage
+
+```bash
+npx scriipture init <project-name> [options]
+```
+
+## Options
+
+| Flag | Description |
+| --- | --- |
+| `--template <name>` | Starter template. Defaults to `token`. |
+| `--package-manager <npm\|pnpm\|yarn>` | Package manager for install step. |
+| `--no-install` | Skip installing dependencies. |
+
+## Example
+
+```bash
+npx scriipture init my-dao --template governance
+```
