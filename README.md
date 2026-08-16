@@ -1,55 +1,45 @@
-# Mintlify Starter Kit
+# Scriipture docs
 
-Use the starter kit to get your docs deployed and ready to customize.
+Documentation site for [Scriipture](https://github.com/Worldstreet-Web-Services/scripture) — a TypeScript-to-Solidity transpiler with a built-in 9-gate security pipeline, browser-wallet deploys, and multi-chain support.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+Live site: [https://tsionark.mintlify.app](https://tsionark.mintlify.app)
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+Built with [Mintlify](https://mintlify.com).
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+## Structure
 
-## AI-assisted writing
+- `introduction.mdx`, `install.mdx`, `quickstart.mdx` — getting started
+- `concepts/` — decorators, type mapping, security pipeline, browser wallet, supported chains
+- `commands/` — one page per CLI subcommand
+- `guides/` — task-oriented walkthroughs
+- `reference/` — library API and all-commands index
+- `docs.json` — navigation, theme, and site config
 
-Set up your AI coding tool to work with Mintlify:
+## Local development
+
+Install the Mintlify CLI:
 
 ```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
 npm i -g mint
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+Run the dev server from the repo root (where `docs.json` lives):
 
-```
+```bash
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+Preview at `http://localhost:3000`.
 
-## Publishing changes
+## Publishing
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+Pushes to the default branch deploy automatically via the Mintlify GitHub app.
 
-## Need help?
+## Contributing
 
-### Troubleshooting
+Content lives in `.mdx` files. Edit the relevant page, run `mint dev` to preview, then open a PR. For upstream Scriipture changes (new CLI flags, decorators, chains), update the matching page under `commands/`, `concepts/`, or `reference/`.
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+## Links
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+- Scriipture repo: [https://github.com/Worldstreet-Web-Services/scripture](https://github.com/Worldstreet-Web-Services/scripture)
+- npm package: [https://www.npmjs.com/package/scriipture](https://www.npmjs.com/package/scriipture)
