@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Scriipture",
   "colors": {
-    "primary": "#0066FF",
-    "light": "#3385FF",
-    "dark": "#0052CC"
+    "primary": "#000000",
+    "light": "#FFFFFF",
+    "dark": "#000000"
   },
   "favicon": "/favicon.svg",
   "navigation": {
