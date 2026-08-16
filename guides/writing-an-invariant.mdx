@@ -1,6 +1,6 @@
 ---
 title: "Writing an invariant"
-description: "Declare properties that must always hold and let Scriipture prove them."
+description: "Declare @invariant methods that Scriipture validate runs against symbolic inputs, plus guidance on keeping them pure and diagnosing counter-examples."
 ---
 
 Invariants are boolean methods decorated with `@invariant`. The [security pipeline](/concepts/security-pipeline) executes them against symbolic inputs during `validate`.
