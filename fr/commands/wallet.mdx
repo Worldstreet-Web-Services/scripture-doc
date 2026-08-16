@@ -1,0 +1,30 @@
+---
+title: "wallet"
+description: "Gérez les keystores locaux."
+---
+
+Créez, importez et listez les keystores chiffrés utilisés par [`deploy --keystore`](/commands/deploy).
+
+## Sous-commandes
+
+### `create`
+
+```bash
+npx scriipture wallet create <name>
+```
+
+### `import`
+
+```bash
+npx scriipture wallet import <name> --private-key <hex>
+```
+
+### `list`
+
+```bash
+npx scriipture wallet list
+```
+
+<Warning>
+  Les keystores sont chiffrés au repos mais doivent tout de même être traités comme sensibles. Préférez les déploiements via [portefeuille de navigateur](/concepts/browser-wallet) pour tout ce qui a une valeur réelle.
+</Warning>

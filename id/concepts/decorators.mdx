@@ -1,0 +1,97 @@
+---
+title: "Decorators"
+description: "Bagaimana decorator TypeScript dipetakan ke modifier, visibility, dan base contract Solidity."
+---
+
+Decorator Scriipture mendeklarasikan modifier, visibility, storage, dan pewarisan. Setiap decorator dipetakan ke konstruk Solidity tertentu, dan transpiler menyisipkan import yang dibutuhkan serta wiring constructor.
+
+## `@onlyOwner`
+
+<CodeGroup>
+
+```ts MyToken.ts
+import { onlyOwner, Address } from "scriipture";
+
+export class MyToken {
+  @onlyOwner
+  mint(to: Address, amount: bigint): void { /* … */ }
+}
+```
+
+```solidity MyToken.sol
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MyToken is Ownable {
+    constructor() Ownable(msg.sender) {}
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        /* … */
+    }
+}
+```
+
+</CodeGroup>
+
+Scriipture mengimpor OpenZeppelin `Ownable`, menambahkan `is Ownable`, dan menyisipkan `Ownable(msg.sender)` di constructor.
+
+## `@view`
+
+Menandai sebuah function sebagai `view` (tanpa mutasi state).
+
+<CodeGroup>
+
+```ts Reader.ts
+export class Reader {
+  @view
+  balanceOf(user: Address): bigint {
+    return this.balances.get(user) ?? 0n;
+  }
+}
+```
+
+```solidity Reader.sol
+function balanceOf(address user) public view returns (uint256) {
+    return balances[user];
+}
+```
+
+</CodeGroup>
+
+## `@payable`
+
+Memperbolehkan sebuah function menerima Ether.
+
+<CodeGroup>
+
+```ts Vault.ts
+export class Vault {
+  @payable
+  deposit(): void { /* msg.value dikreditkan ke sender */ }
+}
+```
+
+```solidity Vault.sol
+function deposit() public payable { /* … */ }
+```
+
+</CodeGroup>
+
+## `@nonReentrant`
+
+Melindungi dari reentrancy menggunakan `ReentrancyGuard` dari OpenZeppelin.
+
+## `@storage`
+
+Mendeklarasikan variabel state persisten. Field class tanpa `@storage` hanya ada pada waktu kompilasi.
+
+## `@assembly`
+
+Menandai body function sebagai Yul/assembly inline. Diteruskan apa adanya.
+
+## `@invariant`
+
+Mendeklarasikan invariant tingkat kontrak yang diperiksa oleh [security pipeline](/concepts/security-pipeline). Lihat [Menulis invariant](/guides/writing-an-invariant).
+
+<Note>
+  Source lengkap untuk setiap decorator ada di [repo Scriipture](https://github.com/Worldstreet-Web-Services/scripture/blob/main/src/).
+</Note>

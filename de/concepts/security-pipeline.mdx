@@ -1,0 +1,46 @@
+---
+title: "Security-Pipeline"
+description: "Die 9 Stufen, die jeder Contract vor dem Deploy durchläuft."
+---
+
+Jedes `scriipture build`, `validate` und `deploy` schickt die kompilierte Solidity durch eine 9-stufige Pipeline. Jede Stufe kann den Build zum Scheitern bringen.
+
+<Steps>
+  <Step title="1. Parser-Sanity">
+    Prüft, ob der TypeScript-Quellcode parsbar ist und jeder Decorator erkannt wird.
+  </Step>
+  <Step title="2. Type-Mapping">
+    Prüft, ob jeder TS-Typ ein gültiges Solidity-Mapping hat. Siehe [Type-Mapping](/concepts/type-mapping).
+  </Step>
+  <Step title="3. Solidity-Kompilierung">
+    Führt `solc` mit strengen Einstellungen aus. Jede Warnung wird als Fehler behandelt, sofern sie nicht auf einer Whitelist steht.
+  </Step>
+  <Step title="4. Statische Slither-Analyse">
+    Erkennt Reentrancy, uninitialisierten Storage, verdeckte Variablen und über 90 weitere Muster.
+  </Step>
+  <Step title="5. Invarianten-Prüfungen">
+    Führt alle `@invariant`-Methoden gegen symbolische Eingaben aus. Siehe [Eine Invariante schreiben](/guides/writing-an-invariant).
+  </Step>
+  <Step title="6. Gas-Budget">
+    Stellt sicher, dass jede Funktion ihr deklariertes Gas-Budget einhält. Vergleichbar mit der `gasdiff`-Ausgabe zwischen Builds.
+  </Step>
+  <Step title="7. Storage-Layout-Diff">
+    Warnt bei inkompatiblen Änderungen am Storage-Layout (bricht Upgrades).
+  </Step>
+  <Step title="8. Bytecode-Sanity">
+    Bestätigt deterministischen Bytecode über Builds hinweg und schlägt bei verdächtigen Opcodes an.
+  </Step>
+  <Step title="9. Deploy-Pre-Flight">
+    Simuliert den Konstruktor auf einer geforkten Chain mit den vorgesehenen Chain-Parametern.
+  </Step>
+</Steps>
+
+<Tip>
+  Für lokale Iteration kannst du einzelne Stufen mit `--skip <gate>` überspringen. Produktions-Deploys führen immer alle neun aus.
+</Tip>
+
+Verwandt:
+
+- [`validate`](/commands/validate) führt die Pipeline aus, ohne zu deployen.
+- [`audit`](/commands/audit) und [`audit-pack`](/commands/audit-pack) erzeugen audit-taugliche Reports.
+- [`gasdiff`](/commands/gasdiff) legt Gas-Regressionen zwischen Builds offen.

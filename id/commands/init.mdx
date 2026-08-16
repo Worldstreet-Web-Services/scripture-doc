@@ -1,0 +1,26 @@
+---
+title: "init"
+description: "Scaffold sebuah proyek Scriipture baru."
+---
+
+Membuat direktori proyek dengan `scriipture.config.ts`, kontrak pemula, dan script paket yang sudah terhubung.
+
+## Penggunaan
+
+```bash
+npx scriipture init <project-name> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--template <name>` | Template pemula. Default-nya `token`. |
+| `--package-manager <npm\|pnpm\|yarn>` | Package manager untuk langkah instalasi. |
+| `--no-install` | Lewati pemasangan dependensi. |
+
+## Contoh
+
+```bash
+npx scriipture init my-dao --template governance
+```

@@ -1,0 +1,30 @@
+---
+title: "deploy"
+description: "Déployez un contrat compilé sur n'importe quelle chaîne EVM prise en charge."
+---
+
+Déploie un artefact construit. Prend en charge la signature via portefeuille de navigateur (recommandé pour les humains) et la signature par keystore (pour la CI).
+
+## Utilisation
+
+```bash
+npx scriipture deploy <contract> --chain <chain> [options]
+```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `--browser` | Signer via le portefeuille de navigateur. Voir [Portefeuille de navigateur](/concepts/browser-wallet). |
+| `--chain <chain>` | Alias ou ID de la chaîne cible. |
+| `--args <json>` | Arguments du constructeur au format JSON. |
+| `--keystore <path>` | Chemin du keystore chiffré pour utilisation en CI. |
+| `--dry-run` | Simule le déploiement sans diffusion. |
+
+## Exemple
+
+```bash
+npx scriipture deploy MyToken --chain base-sepolia --browser
+```
+
+Pour un déploiement vérifiable en audit incluant une attestation de bytecode, utilisez [`secure-deploy`](/commands/secure-deploy).

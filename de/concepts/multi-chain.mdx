@@ -1,0 +1,50 @@
+---
+title: "Unterstützte Chains"
+description: "Die Netzwerke, auf die Scriipture deployen kann, und wie du eigene hinzufügst."
+---
+
+Scriipture deployt out of the box in drei Netzwerke: Ethereum, Base und Konstellation.
+
+## Eingebaute Netzwerke
+
+| Netzwerk | Alias | Hinweise |
+| --- | --- | --- |
+| Ethereum | `ethereum`, `sepolia` | Mainnet und Sepolia-Testnet. |
+| Base | `base`, `base-sepolia` | Coinbase' L2-Mainnet und Sepolia-Testnet. |
+| Konstellation (lokal) | `konstellation-local` | Läuft gegen einen lokalen Konstellation-Node. Öffentliche RPC-Endpunkte folgen in Kürze. |
+
+Verwende den Alias mit jedem Befehl, der `--chain` akzeptiert:
+
+```bash
+npx scriipture deploy --chain base-sepolia --browser
+```
+
+<Info>
+  Konstellation ist eine neue Chain, die sich derzeit in Entwicklung befindet. Aktuell kannst du gegen einen lokal laufenden Node mit `--chain konstellation-local` deployen. Öffentliche Mainnet- und Testnet-Endpunkte werden hier ergänzt, sobald sie verfügbar sind.
+</Info>
+
+## Lokales Konstellation-Setup
+
+Verweise Scriipture auf deinen lokalen Konstellation-Node:
+
+```ts scriipture.config.ts
+import { defineConfig } from "scriipture";
+
+export default defineConfig({
+  chains: {
+    "konstellation-local": {
+      rpc: "http://127.0.0.1:8545",
+    },
+  },
+});
+```
+
+Dann:
+
+```bash
+npx scriipture deploy --chain konstellation-local --browser
+```
+
+## Ein eigenes Netzwerk hinzufügen
+
+Jede EVM-kompatible RPC kann auf die gleiche Weise ergänzt werden. Das vollständige Konfigurationsschema findest du unter [`config`](/commands/config).

@@ -1,0 +1,21 @@
+---
+title: "audit"
+description: "Erzeugt einen menschenlesbaren Audit-Report für einen Contract."
+---
+
+Kombiniert `slither`, Invarianten-Ergebnisse und Gas-Verbrauch zu einem einzigen Markdown-Report. Nützlich für interne Reviews, bevor ein externes Audit angefordert wird.
+
+## Verwendung
+
+```bash
+npx scriipture audit <contract> [options]
+```
+
+## Optionen
+
+| Flag | Beschreibung |
+| --- | --- |
+| `--out <path>` | Pfad des Reports. Standard: `./audit/<contract>.md`. |
+| `--format <md\|html\|json>` | Report-Format. |
+
+Für ein portables Bundle inklusive Quellcode und Artefakten verwende [`audit-pack`](/commands/audit-pack).

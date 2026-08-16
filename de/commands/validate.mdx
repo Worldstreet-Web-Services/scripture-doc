@@ -1,0 +1,26 @@
+---
+title: "validate"
+description: "Die 9-stufige Security-Pipeline ohne Deploy ausführen."
+---
+
+Führt jede Stufe aus, die in der [Security-Pipeline](/concepts/security-pipeline) beschrieben ist, und meldet Probleme. Beendet sich bei einem Fehler mit einem Exit-Code ungleich null.
+
+## Verwendung
+
+```bash
+npx scriipture validate [options]
+```
+
+## Optionen
+
+| Flag | Beschreibung |
+| --- | --- |
+| `--skip <gate>` | Eine bestimmte Stufe überspringen. Wiederholbar. |
+| `--only <gate>` | Nur die angegebene Stufe ausführen. |
+| `--json` | Report als JSON ausgeben. |
+
+## Beispiel
+
+```bash
+npx scriipture validate --skip gas-budget
+```

@@ -1,0 +1,48 @@
+---
+title: "Mapping des types"
+description: "Comment les types TypeScript se traduisent en types Solidity."
+---
+
+Scriipture fait correspondre le système de types TypeScript à celui de Solidity. La plupart des conversions sont 1:1 ; quelques-unes nécessitent des types fournis par Scriipture.
+
+## Types primitifs
+
+| TypeScript | Solidity | Notes |
+| --- | --- | --- |
+| `bigint` | `uint256` | Par défaut. Utilisez des types brandés pour d'autres largeurs. |
+| `Uint8`, `Uint16`, ... `Uint256` | `uint8` ... `uint256` | Largeurs explicites. |
+| `Int8`, ..., `Int256` | `int8` ... `int256` | Entiers signés. |
+| `boolean` | `bool` |  |
+| `string` | `string` | UTF-8. |
+| `Bytes`, `Bytes32` | `bytes`, `bytes32` | Fixe et dynamique. |
+| `Address` | `address` | Type brandé fourni par Scriipture. |
+
+## Collections
+
+<CodeGroup>
+
+```ts Collections.ts
+@storage balances: Map<Address, bigint> = new Map();
+@storage names: string[] = [];
+@storage user: { name: string; age: bigint } = { name: "", age: 0n };
+```
+
+```solidity Collections.sol
+mapping(address => uint256) public balances;
+string[] public names;
+
+struct User { string name; uint256 age; }
+User public user;
+```
+
+</CodeGroup>
+
+<Warning>
+  Une `Map` dans un contrat Scriipture est compilée en `mapping` Solidity. Elle ne prend pas en charge `.size` ou l'itération, conformément à la sémantique Solidity.
+</Warning>
+
+## Enums
+
+Les `enum` TypeScript sont compilés en `enum` Solidity. Préférez les enums numériques ; les enums de chaînes sont rejetés par le parser.
+
+Voir [Décorateurs](/concepts/decorators) pour savoir comment ces types se combinent avec les décorateurs de visibilité et de contrôle d'accès.

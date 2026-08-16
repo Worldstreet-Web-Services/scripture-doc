@@ -1,0 +1,50 @@
+---
+title: "Chain yang didukung"
+description: "Jaringan yang bisa dituju Scriipture untuk deploy dan cara menambahkan milik Anda sendiri."
+---
+
+Scriipture men-deploy ke tiga jaringan secara bawaan: Ethereum, Base, dan Konstellation.
+
+## Jaringan bawaan
+
+| Jaringan | Alias | Catatan |
+| --- | --- | --- |
+| Ethereum | `ethereum`, `sepolia` | Mainnet dan testnet Sepolia. |
+| Base | `base`, `base-sepolia` | L2 mainnet dari Coinbase dan testnet Sepolia. |
+| Konstellation (lokal) | `konstellation-local` | Berjalan terhadap node Konstellation lokal. Endpoint RPC publik akan hadir. |
+
+Gunakan alias dengan perintah apa pun yang menerima `--chain`:
+
+```bash
+npx scriipture deploy --chain base-sepolia --browser
+```
+
+<Info>
+  Konstellation adalah chain baru yang saat ini sedang dalam pengembangan. Untuk sekarang, deploy terhadap node yang berjalan secara lokal dengan `--chain konstellation-local`. Endpoint mainnet dan testnet publik akan ditambahkan di sini setelah tersedia.
+</Info>
+
+## Pengaturan Konstellation lokal
+
+Arahkan Scriipture ke node Konstellation lokal Anda:
+
+```ts scriipture.config.ts
+import { defineConfig } from "scriipture";
+
+export default defineConfig({
+  chains: {
+    "konstellation-local": {
+      rpc: "http://127.0.0.1:8545",
+    },
+  },
+});
+```
+
+Kemudian:
+
+```bash
+npx scriipture deploy --chain konstellation-local --browser
+```
+
+## Menambahkan jaringan Anda sendiri
+
+RPC yang kompatibel EVM apa pun dapat ditambahkan dengan cara yang sama. Lihat [`config`](/commands/config) untuk skema konfigurasi lengkap.

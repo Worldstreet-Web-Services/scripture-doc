@@ -1,0 +1,24 @@
+---
+title: "gasdiff"
+description: "Comparez la consommation de gaz entre deux builds et détectez les régressions."
+---
+
+Exécute la suite de tests sur deux builds et compare le coût en gaz de chaque fonction.
+
+## Utilisation
+
+```bash
+npx scriipture gasdiff --base <ref> --head <ref>
+```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `--base <ref>` | Commit, tag ou artefact de référence. |
+| `--head <ref>` | Commit, tag ou artefact à comparer. |
+| `--threshold <pct>` | Échoue si une fonction régresse de plus que ce pourcentage. |
+
+<Tip>
+  Exécutez ceci sur chaque PR. Un `threshold` d'une ligne détecte les explosions de gaz accidentelles.
+</Tip>

@@ -1,0 +1,21 @@
+---
+title: "audit"
+description: "Menghasilkan laporan audit yang mudah dibaca untuk sebuah kontrak."
+---
+
+Menggabungkan `slither`, hasil invariant, dan penggunaan gas ke dalam satu laporan Markdown. Berguna untuk tinjauan internal sebelum meminta audit eksternal.
+
+## Penggunaan
+
+```bash
+npx scriipture audit <contract> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--out <path>` | Path laporan. Default-nya `./audit/<contract>.md`. |
+| `--format <md\|html\|json>` | Format laporan. |
+
+Untuk bundel portabel yang mencakup source dan artefak, gunakan [`audit-pack`](/commands/audit-pack).

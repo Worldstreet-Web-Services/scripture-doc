@@ -1,0 +1,46 @@
+---
+title: "Pipeline de sécurité"
+description: "Les 9 portes que chaque contrat traverse avant le déploiement."
+---
+
+Chaque `scriipture build`, `validate` et `deploy` fait passer le Solidity compilé par un pipeline à 9 portes. N'importe quelle porte peut faire échouer le build.
+
+<Steps>
+  <Step title="1. Sanité du parser">
+    Confirme que le code source TypeScript s'analyse et que chaque décorateur est reconnu.
+  </Step>
+  <Step title="2. Mapping des types">
+    Vérifie que chaque type TS a un mapping Solidity valide. Voir [Mapping des types](/concepts/type-mapping).
+  </Step>
+  <Step title="3. Compilation Solidity">
+    Exécute `solc` avec des paramètres stricts. Tout avertissement est traité comme une erreur sauf s'il est sur liste blanche.
+  </Step>
+  <Step title="4. Analyse statique Slither">
+    Détecte la réentrance, le stockage non initialisé, les variables masquées et plus de 90 autres motifs.
+  </Step>
+  <Step title="5. Vérification des invariants">
+    Exécute les méthodes `@invariant` contre des entrées symboliques. Voir [Écrire un invariant](/guides/writing-an-invariant).
+  </Step>
+  <Step title="6. Budget de gaz">
+    Vérifie que chaque fonction respecte son budget de gaz déclaré. Comparable à la sortie de `gasdiff` entre les builds.
+  </Step>
+  <Step title="7. Diff du layout de stockage">
+    Avertit en cas de modifications incompatibles du layout de stockage (casse les mises à jour).
+  </Step>
+  <Step title="8. Sanité du bytecode">
+    Confirme un bytecode déterministe entre les builds et l'absence d'opcodes suspects.
+  </Step>
+  <Step title="9. Pré-vol du déploiement">
+    Simule le constructeur sur une chaîne forkée avec les paramètres de chaîne prévus.
+  </Step>
+</Steps>
+
+<Tip>
+  Ignorez des portes individuelles avec `--skip <gate>` pour l'itération locale. Les déploiements en production exécutent toujours les neuf.
+</Tip>
+
+Voir aussi :
+
+- [`validate`](/commands/validate) exécute le pipeline sans déployer.
+- [`audit`](/commands/audit) et [`audit-pack`](/commands/audit-pack) produisent des rapports prêts pour l'auditeur.
+- [`gasdiff`](/commands/gasdiff) met en évidence les régressions de gaz entre les builds.

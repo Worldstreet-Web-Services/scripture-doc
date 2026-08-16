@@ -1,0 +1,70 @@
+---
+title: "Einführung"
+description: "Schreibe Smart Contracts in TypeScript. Deploye sie wie jedes andere Node.js-Projekt."
+---
+
+Mit Scriipture kannst du Smart Contracts in **reinem TypeScript** schreiben – derselben Sprache, die du bereits für deine APIs und dein Frontend verwendest. Keine neue Sprache. Kein neues Tooling. Es reicht `npm install`, eine Klasse schreiben und deployen.
+
+```bash
+npm install scriipture
+```
+
+## Für TypeScript-Entwickler:innen konzipiert
+
+Wenn du Node.js kennst, kennst du bereits 90 % von Scriipture. Ein Smart Contract ist einfach eine Klasse. Methoden werden zu Funktionen, die jeder aufrufen kann. Klassenfelder werden zum Storage. Das ist das gesamte Modell.
+
+```ts Counter.ts
+import { storage } from "scriipture";
+
+export class Counter {
+  @storage count: bigint = 0n;
+
+  increment(): void {
+    this.count += 1n;
+  }
+}
+```
+
+Scriipture kümmert sich um alles Blockchain-Spezifische für dich: Es generiert den Low-Level-Contract-Code, prüft ihn auf verbreitete Fehler und deployt ihn über deine Browser-Wallet. Du musst TypeScript nie verlassen.
+
+## Was du bekommst
+
+<CardGroup cols={2}>
+  <Card title="Durchgängig TypeScript" icon="code">
+    Dein Editor, dein Linter, dein Type-Checker, dein Test-Framework. Keine neue Sprache, keine neue IDE.
+  </Card>
+
+  <Card title="Sicherheitsprüfungen inklusive" icon="shield-check">
+    Jeder Build führt 9 automatische Prüfungen auf gängige Contract-Fehler durch, bevor du deployen kannst. Mehr dazu unter [Sicherheitsprüfungen](/concepts/security-pipeline).
+  </Card>
+
+  <Card title="Deploy aus dem Browser" icon="wallet">
+    Signiere Deploys mit einer Browser-Wallet wie MetaMask. Keine Private Keys in `.env`-Dateien. Siehe [So funktionieren Deploys](/concepts/browser-wallet).
+  </Card>
+
+  <Card title="Funktioniert in echten Netzwerken" icon="network-wired">
+    Enthält Support für Ethereum, Base und Konstellation. Siehe [Unterstützte Chains](/concepts/multi-chain).
+  </Card>
+</CardGroup>
+
+## Neu bei Smart Contracts?
+
+Kein Problem. Hier die 30-Sekunden-Version:
+
+- Ein **Smart Contract** ist ein Programm, das auf einer Blockchain lebt. Nach dem Deploy kann jeder seine Funktionen über das Internet aufrufen.
+- Eine **Blockchain** (Ethereum, Base, Konstellation) ist eine gemeinsame Datenbank, auf die sich viele Computer einigen. Einen Contract zu deployen ist wie ein `POST` von Code an diese Datenbank.
+- Eine **Wallet** (wie MetaMask) ist deine Identität. Du nutzt sie, um Deploys und Transaktionen zu signieren – so, wie du dich mit einem Google-Konto anmeldest.
+
+Das war's. Du kannst jetzt den Rest der Dokumentation lesen.
+
+## Nächste Schritte
+
+<CardGroup cols={2}>
+  <Card title="Installation" icon="download" href="/install">
+    Zwei Befehle und du bist eingerichtet.
+  </Card>
+
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Deploye deinen ersten Contract in etwa 60 Sekunden.
+  </Card>
+</CardGroup>

@@ -1,0 +1,32 @@
+---
+title: "Pemecahan masalah"
+description: "Masalah umum dan cara mengatasinya."
+---
+
+<AccordionGroup>
+  <Accordion title="`solc` tidak ditemukan">
+    Jalankan `npx scriipture doctor --fix` untuk memasang `solc` yang kompatibel. Lihat [`doctor`](/commands/doctor).
+  </Accordion>
+
+  <Accordion title="Slither hilang">
+    Pasang dengan `pipx install slither-analyzer` atau jalankan `doctor --fix`. Tanpa Slither, gate analisis statis dilewati dengan peringatan.
+  </Accordion>
+
+  <Accordion title="`localhost:7654` sudah digunakan">
+    Proses lain terikat pada port bridge. Gunakan `scriipture deploy --browser --bridge-port 7655`. Lihat [Browser wallet](/concepts/browser-wallet).
+  </Accordion>
+
+  <Accordion title="Invariant gagal dengan counter-example">
+    Pipeline mencetak trace input yang memecahkan invariant Anda. Reproduksi dengan `scriipture test --seed <n>` di mana `n` adalah seed dari output kegagalan. Lihat [Menulis invariant](/guides/writing-an-invariant).
+  </Accordion>
+
+  <Accordion title="Bytecode yang di-deploy tidak cocok saat verify">
+    Hampir selalu ketidaksesuaian optimizer atau `via-ir`. Jalankan ulang [`compile`](/commands/compile) dengan flag yang sama persis saat Anda deploy, lalu jalankan lagi [`verify`](/commands/verify).
+  </Accordion>
+
+  <Accordion title="`@onlyOwner` terkompilasi tapi revert saat dipanggil">
+    Anda memanggil dari akun yang bukan deployer. `Ownable(msg.sender)` di-set di constructor. Transfer kepemilikan dengan `transferOwnership(newOwner)` atau deploy dari akun admin yang dituju.
+  </Accordion>
+</AccordionGroup>
+
+Masih buntu? Buka issue di [repo Scriipture](https://github.com/Worldstreet-Web-Services/scripture/issues).

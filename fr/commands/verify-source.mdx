@@ -1,0 +1,22 @@
+---
+title: "verify-source"
+description: "Soumettez le code source à un explorateur de blocs pour vérification publique."
+---
+
+Téléverse le Solidity généré, les paramètres du compilateur et les arguments du constructeur vers un explorateur de blocs (Etherscan, Basescan, Blockscout).
+
+## Utilisation
+
+```bash
+npx scriipture verify-source <address> --chain <chain> [options]
+```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `--explorer <name>` | Explorateur cible. Détecté automatiquement à partir de la chaîne. |
+| `--api-key <key>` | Clé API de l'explorateur. Également lue depuis l'environnement. |
+| `--contract <name>` | Nom du contrat si plusieurs sont présents dans l'artefact. |
+
+Voir [Vérification sur Basescan](/guides/verifying-on-basescan) pour un tutoriel complet.

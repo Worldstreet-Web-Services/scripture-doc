@@ -1,0 +1,23 @@
+---
+title: "verify"
+description: "Verifikasi bahwa bytecode kontrak yang di-deploy cocok dengan build lokal."
+---
+
+Mengambil ulang bytecode on-chain untuk alamat yang di-deploy dan mendiff-nya dengan artefak lokal.
+
+## Penggunaan
+
+```bash
+npx scriipture verify <address> --chain <chain> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--chain <chain>` | Alias atau ID chain. Lihat [Multi-chain](/concepts/multi-chain). |
+| `--artifact <path>` | Artefak lokal untuk dibandingkan. |
+
+<Tip>
+  Untuk memverifikasi source di block explorer (Basescan, Etherscan), lihat [`verify-source`](/commands/verify-source).
+</Tip>

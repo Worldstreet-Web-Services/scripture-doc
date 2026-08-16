@@ -1,0 +1,30 @@
+---
+title: "doctor"
+description: "Die lokale Toolchain diagnostizieren und fehlende Komponenten optional automatisch installieren."
+---
+
+Prüft, ob Node.js, `solc`, `slither` und alle anderen Analyzer, die die [Security-Pipeline](/concepts/security-pipeline) benötigt, vorhanden und in der richtigen Version installiert sind.
+
+## Verwendung
+
+```bash
+npx scriipture doctor [options]
+```
+
+## Optionen
+
+| Flag | Beschreibung |
+| --- | --- |
+| `--fix` | Fehlende Tools installieren. |
+| `--json` | Maschinenlesbare Ausgabe erzeugen. |
+| `--verbose` | Rohbefehl und Ergebnis jeder Prüfung ausgeben. |
+
+## Beispiel
+
+```bash
+npx scriipture doctor --fix
+```
+
+<Tip>
+  Führe dies in CI als ersten Schritt aus. So werden fehlende Analyzer erkannt, bevor du bauen willst.
+</Tip>

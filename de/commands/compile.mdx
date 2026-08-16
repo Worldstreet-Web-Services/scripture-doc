@@ -1,0 +1,26 @@
+---
+title: "compile"
+description: "Nur den Solidity-Kompilierungsschritt ausführen."
+---
+
+Überspringt TS-Parsing und Validierung. Nützlich für das Iterieren an handbearbeiteter Solidity oder an Drittanbieter-Contracts.
+
+## Verwendung
+
+```bash
+npx scriipture compile <path> [options]
+```
+
+## Optionen
+
+| Flag | Beschreibung |
+| --- | --- |
+| `--solc <version>` | Eine bestimmte `solc`-Version festlegen. |
+| `--optimizer <n>` | Optimizer-Runs. |
+| `--via-ir` | Yul-IR-Pipeline aktivieren. |
+
+## Beispiel
+
+```bash
+npx scriipture compile contracts/MyToken.sol --via-ir
+```

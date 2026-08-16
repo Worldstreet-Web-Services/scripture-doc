@@ -1,0 +1,21 @@
+---
+title: "audit-pack"
+description: "Bundel semua yang dibutuhkan auditor ke dalam satu file zip."
+---
+
+Mengemas Solidity yang di-generate, sumber TS, output `slither`, bukti invariant, laporan gas, dan sebuah `README` untuk auditor.
+
+## Penggunaan
+
+```bash
+npx scriipture audit-pack <contract> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--out <path>` | Path arsip output. |
+| `--include-tests` | Sertakan suite tes. |
+
+Serahkan file `.zip` yang dihasilkan kepada auditor Anda. Tidak ada yang lain diperlukan.

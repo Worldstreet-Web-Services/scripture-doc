@@ -1,0 +1,30 @@
+---
+title: "deploy"
+description: "Deploy kontrak yang telah dikompilasi ke chain EVM yang didukung."
+---
+
+Men-deploy artefak hasil build. Mendukung penandatanganan dengan browser wallet (direkomendasikan untuk manusia) dan penandatanganan dengan keystore (untuk CI).
+
+## Penggunaan
+
+```bash
+npx scriipture deploy <contract> --chain <chain> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--browser` | Tanda tangan via browser wallet. Lihat [Browser wallet](/concepts/browser-wallet). |
+| `--chain <chain>` | Alias atau ID chain tujuan. |
+| `--args <json>` | Argumen constructor dalam bentuk JSON. |
+| `--keystore <path>` | Path ke keystore terenkripsi untuk penggunaan CI. |
+| `--dry-run` | Simulasikan deploy tanpa disiarkan. |
+
+## Contoh
+
+```bash
+npx scriipture deploy MyToken --chain base-sepolia --browser
+```
+
+Untuk deploy yang dapat diverifikasi audit dan menyertakan attestation bytecode, gunakan [`secure-deploy`](/commands/secure-deploy).

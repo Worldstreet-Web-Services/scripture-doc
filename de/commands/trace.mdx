@@ -1,0 +1,23 @@
+---
+title: "trace"
+description: "Eine bestimmte Transaktion abspielen und analysieren."
+---
+
+Holt eine Transaktion, spielt sie gegen einen lokalen Fork ab und gibt einen menschenlesbaren Call-Trace mit dekodierten Argumenten und Revert-Gründen aus.
+
+## Verwendung
+
+```bash
+npx scriipture trace <tx-hash> --chain <chain> [options]
+```
+
+## Optionen
+
+| Flag | Beschreibung |
+| --- | --- |
+| `--json` | Trace als JSON ausgeben. |
+| `--depth <n>` | Call-Tiefe in der Ausgabe begrenzen. |
+
+<Tip>
+  Kombiniere dies mit [`verify-source`](/commands/verify-source), damit dekodierte Funktionsnamen im Trace erscheinen.
+</Tip>

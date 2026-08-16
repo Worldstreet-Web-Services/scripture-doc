@@ -1,0 +1,70 @@
+---
+title: "Introduction"
+description: "Écrivez des smart contracts en TypeScript. Déployez-les comme n'importe quel projet Node.js."
+---
+
+Scriipture vous permet d'écrire des smart contracts en **TypeScript classique**, le même langage que vous utilisez déjà pour vos API et votre frontend. Aucun nouveau langage à apprendre. Aucun nouvel outillage. Il suffit d'un `npm install`, d'écrire une classe et de déployer.
+
+```bash
+npm install scriipture
+```
+
+## Pensé pour les développeurs TypeScript
+
+Si vous connaissez Node.js, vous connaissez déjà 90 % de Scriipture. Un smart contract est simplement une classe. Les méthodes deviennent des fonctions que n'importe qui peut appeler. Les champs de classe deviennent du stockage. Voilà tout le modèle.
+
+```ts Counter.ts
+import { storage } from "scriipture";
+
+export class Counter {
+  @storage count: bigint = 0n;
+
+  increment(): void {
+    this.count += 1n;
+  }
+}
+```
+
+Scriipture gère pour vous tout ce qui est spécifique à la blockchain : il génère le code de contrat bas niveau, vérifie les bugs courants et le déploie via votre portefeuille de navigateur. Vous n'avez jamais à quitter TypeScript.
+
+## Ce que vous obtenez
+
+<CardGroup cols={2}>
+  <Card title="TypeScript de bout en bout" icon="code">
+    Votre éditeur, votre linter, votre vérificateur de types, votre framework de tests. Pas de nouveau langage, pas de nouvel IDE.
+  </Card>
+
+  <Card title="Contrôles de sécurité intégrés" icon="shield-check">
+    Chaque build exécute 9 contrôles automatiques pour les bugs courants avant tout déploiement. En savoir plus dans [Contrôles de sécurité](/concepts/security-pipeline).
+  </Card>
+
+  <Card title="Déployez depuis votre navigateur" icon="wallet">
+    Signez les déploiements avec un portefeuille de navigateur comme MetaMask. Aucune clé privée dans les fichiers `.env`. Voir [Comment fonctionnent les déploiements](/concepts/browser-wallet).
+  </Card>
+
+  <Card title="Fonctionne sur de vrais réseaux" icon="network-wired">
+    Livré avec la prise en charge d'Ethereum, Base et Konstellation. Voir [Chaînes prises en charge](/concepts/multi-chain).
+  </Card>
+</CardGroup>
+
+## Nouveau dans les smart contracts ?
+
+Pas de problème. Voici la version de 30 secondes :
+
+- Un **smart contract** est un programme qui vit sur une blockchain. Une fois déployé, n'importe qui peut appeler ses fonctions via internet.
+- Une **blockchain** (Ethereum, Base, Konstellation) est une base de données partagée sur laquelle de nombreux ordinateurs s'accordent. Déployer un contrat, c'est comme faire un `POST` de code dans cette base de données.
+- Un **portefeuille** (comme MetaMask) est votre identité. Vous l'utilisez pour signer des déploiements et des transactions, comme vous utiliseriez un compte Google pour vous connecter.
+
+C'est tout. Vous pouvez maintenant lire le reste de la documentation.
+
+## Étapes suivantes
+
+<CardGroup cols={2}>
+  <Card title="Installation" icon="download" href="/install">
+    Deux commandes et vous êtes prêt.
+  </Card>
+
+  <Card title="Démarrage rapide" icon="rocket" href="/quickstart">
+    Déployez votre premier contrat en environ 60 secondes.
+  </Card>
+</CardGroup>

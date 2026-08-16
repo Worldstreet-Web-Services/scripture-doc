@@ -1,0 +1,30 @@
+---
+title: "Vérification sur Basescan"
+description: "Publiez les sources d'un déploiement Base ou Base Sepolia pour que tout le monde puisse les lire."
+---
+
+Après un [`deploy`](/commands/deploy) ou un [`secure-deploy`](/commands/secure-deploy) réussi, soumettez les sources à Basescan pour que les appelants puissent lire le code et interagir via l'interface de l'explorateur.
+
+<Steps>
+  <Step title="Obtenir une clé API Basescan">
+    Connectez-vous sur [basescan.org](https://basescan.org) et créez une clé API. Exportez-la :
+
+    ```bash
+    export BASESCAN_API_KEY=your-key-here
+    ```
+  </Step>
+  <Step title="Exécuter verify-source">
+    ```bash
+    npx scriipture verify-source 0xYourAddress --chain base-sepolia
+    ```
+
+    Scriipture récupère `BASESCAN_API_KEY` automatiquement.
+  </Step>
+  <Step title="Confirmer">
+    Visitez `https://sepolia.basescan.org/address/0xYourAddress#code`. Vous devriez voir les sources, les paramètres du compilateur et un badge vert **Contract Source Code Verified**.
+  </Step>
+</Steps>
+
+<Tip>
+  Pour le mainnet Base, utilisez `--chain base` avec la même commande. L'explorateur mainnet est `https://basescan.org`.
+</Tip>

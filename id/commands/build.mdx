@@ -1,0 +1,27 @@
+---
+title: "build"
+description: "Transpile kontrak TypeScript ke Solidity dan kompilasi dengan solc."
+---
+
+Build end-to-end: mem-parse sumber TS, mengeluarkan Solidity, dan mengompilasi ke bytecode. Menjalankan [security pipeline](/concepts/security-pipeline) kecuali `--skip-validate` diberikan.
+
+## Penggunaan
+
+```bash
+npx scriipture build [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--out <dir>` | Direktori output. Default-nya `./build`. |
+| `--only <glob>` | Hanya build kontrak yang cocok. |
+| `--skip-validate` | Lewati security pipeline. |
+| `--optimizer <n>` | Jumlah run optimizer `solc`. Default-nya `200`. |
+
+## Contoh
+
+```bash
+npx scriipture build --optimizer 1000
+```

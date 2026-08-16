@@ -1,0 +1,48 @@
+---
+title: "Type mapping"
+description: "Bagaimana tipe TypeScript diterjemahkan ke tipe Solidity."
+---
+
+Scriipture memetakan sistem tipe TypeScript ke sistem tipe Solidity. Sebagian besar konversi bersifat 1:1; beberapa memerlukan tipe yang disediakan oleh Scriipture.
+
+## Tipe primitif
+
+| TypeScript | Solidity | Catatan |
+| --- | --- | --- |
+| `bigint` | `uint256` | Default. Gunakan branded type untuk lebar lain. |
+| `Uint8`, `Uint16`, ... `Uint256` | `uint8` ... `uint256` | Lebar eksplisit. |
+| `Int8`, ..., `Int256` | `int8` ... `int256` | Integer bertanda. |
+| `boolean` | `bool` |  |
+| `string` | `string` | UTF-8. |
+| `Bytes`, `Bytes32` | `bytes`, `bytes32` | Tetap dan dinamis. |
+| `Address` | `address` | Branded type yang disediakan Scriipture. |
+
+## Koleksi
+
+<CodeGroup>
+
+```ts Collections.ts
+@storage balances: Map<Address, bigint> = new Map();
+@storage names: string[] = [];
+@storage user: { name: string; age: bigint } = { name: "", age: 0n };
+```
+
+```solidity Collections.sol
+mapping(address => uint256) public balances;
+string[] public names;
+
+struct User { string name; uint256 age; }
+User public user;
+```
+
+</CodeGroup>
+
+<Warning>
+  `Map` dalam kontrak Scriipture dikompilasi menjadi `mapping` Solidity. Ia tidak mendukung `.size` atau iterasi, sesuai dengan semantik Solidity.
+</Warning>
+
+## Enum
+
+`enum` TypeScript dikompilasi menjadi `enum` Solidity. Lebih baik gunakan enum numerik; enum string ditolak oleh parser.
+
+Lihat [Decorators](/concepts/decorators) untuk bagaimana tipe-tipe ini digabung dengan decorator visibility dan access-control.

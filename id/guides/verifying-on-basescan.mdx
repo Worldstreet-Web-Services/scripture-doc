@@ -1,0 +1,30 @@
+---
+title: "Verifikasi di Basescan"
+description: "Publikasikan source untuk deployment Base atau Base Sepolia agar siapa pun bisa membacanya."
+---
+
+Setelah [`deploy`](/commands/deploy) atau [`secure-deploy`](/commands/secure-deploy) yang sukses, kirim source ke Basescan agar pemanggil dapat membaca kode dan berinteraksi melalui UI explorer.
+
+<Steps>
+  <Step title="Dapatkan API key Basescan">
+    Masuk di [basescan.org](https://basescan.org) dan buat API key. Export:
+
+    ```bash
+    export BASESCAN_API_KEY=your-key-here
+    ```
+  </Step>
+  <Step title="Jalankan verify-source">
+    ```bash
+    npx scriipture verify-source 0xYourAddress --chain base-sepolia
+    ```
+
+    Scriipture mengambil `BASESCAN_API_KEY` secara otomatis.
+  </Step>
+  <Step title="Konfirmasi">
+    Kunjungi `https://sepolia.basescan.org/address/0xYourAddress#code`. Anda seharusnya melihat source, pengaturan compiler, dan badge hijau **Contract Source Code Verified**.
+  </Step>
+</Steps>
+
+<Tip>
+  Untuk Base mainnet, gunakan `--chain base` dan perintah yang sama. Explorer mainnet adalah `https://basescan.org`.
+</Tip>

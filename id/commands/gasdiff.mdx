@@ -1,0 +1,24 @@
+---
+title: "gasdiff"
+description: "Bandingkan penggunaan gas antara dua build dan tandai regresi."
+---
+
+Menjalankan suite tes terhadap dua build dan mendiff biaya gas setiap function.
+
+## Penggunaan
+
+```bash
+npx scriipture gasdiff --base <ref> --head <ref>
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--base <ref>` | Commit, tag, atau artefak baseline. |
+| `--head <ref>` | Commit, tag, atau artefak pembanding. |
+| `--threshold <pct>` | Gagal jika ada function yang mengalami regresi lebih dari persentase ini. |
+
+<Tip>
+  Jalankan ini di setiap PR. Satu baris `threshold` menangkap lonjakan gas yang tidak disengaja.
+</Tip>

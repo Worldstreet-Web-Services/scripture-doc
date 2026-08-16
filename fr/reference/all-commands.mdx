@@ -1,0 +1,41 @@
+---
+title: "Toutes les commandes"
+description: "Chaque sous-commande de la CLI en un coup d'œil."
+---
+
+Index rapide de chaque sous-commande de la CLI Scriipture. Suivez les liens pour la liste complète des options.
+
+| Commande | Rôle |
+| --- | --- |
+| [`doctor`](/commands/doctor) | Vérifie la chaîne d'outils et installe éventuellement les éléments manquants. |
+| [`init`](/commands/init) | Initialise un nouveau projet Scriipture. |
+| [`build`](/commands/build) | Transpile le TS en Solidity et compile. |
+| [`validate`](/commands/validate) | Exécute le pipeline de sécurité à 9 portes. |
+| [`verify`](/commands/verify) | Compare le bytecode on-chain à un artefact local. |
+| [`compile`](/commands/compile) | Exécute uniquement l'étape de compilation Solidity. |
+| [`deploy`](/commands/deploy) | Déploie un contrat compilé. |
+| [`secure-deploy`](/commands/secure-deploy) | Déploie avec une piste d'audit complète. |
+| [`verify-source`](/commands/verify-source) | Soumet le code source à un explorateur de blocs. |
+| [`audit`](/commands/audit) | Génère un rapport d'audit lisible. |
+| [`audit-pack`](/commands/audit-pack) | Regroupe tout ce dont un auditeur a besoin. |
+| [`gasdiff`](/commands/gasdiff) | Compare la consommation de gaz entre deux builds. |
+| [`test`](/commands/test) | Exécute la suite de tests des contrats. |
+| [`trace`](/commands/trace) | Rejoue et inspecte une transaction spécifique. |
+| [`wallet`](/commands/wallet) | Gère les keystores locaux. |
+| [`config`](/commands/config) | Inspecte et modifie la configuration du projet. |
+
+## Options globales
+
+Disponibles sur chaque commande :
+
+| Option | Description |
+| --- | --- |
+| `--help` | Affiche l'aide de la commande. |
+| `--version` | Affiche la version installée de Scriipture. |
+| `--json` | Émet une sortie lisible par machine lorsque pris en charge. |
+| `--verbose` | Journalisation supplémentaire. |
+| `--cwd <path>` | Exécute dans un répertoire de projet différent. |
+
+<Note>
+  Cette page est un résumé. La page de chaque sous-commande contient la liste complète des options et des exemples.
+</Note>

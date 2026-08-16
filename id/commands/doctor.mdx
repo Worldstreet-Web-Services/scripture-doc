@@ -1,0 +1,30 @@
+---
+title: "doctor"
+description: "Diagnosa toolchain lokal dan opsional memasang otomatis komponen yang hilang."
+---
+
+Memeriksa bahwa Node.js, `solc`, `slither`, dan analisator lain yang dibutuhkan oleh [security pipeline](/concepts/security-pipeline) tersedia dan versinya benar.
+
+## Penggunaan
+
+```bash
+npx scriipture doctor [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--fix` | Pasang alat apa pun yang hilang. |
+| `--json` | Keluarkan output yang dapat dibaca mesin. |
+| `--verbose` | Cetak perintah mentah dan hasil setiap pemeriksaan. |
+
+## Contoh
+
+```bash
+npx scriipture doctor --fix
+```
+
+<Tip>
+  Jalankan ini di CI sebagai langkah pertama. Ia menangkap analisator yang hilang sebelum Anda mencoba build.
+</Tip>

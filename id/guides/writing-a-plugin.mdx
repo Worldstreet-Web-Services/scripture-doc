@@ -1,0 +1,44 @@
+---
+title: "Menulis plugin"
+description: "Perluas transpiler atau security pipeline dengan logika Anda sendiri."
+---
+
+Plugin dapat menambahkan decorator baru, gate pipeline baru, atau codegen baru. Daftarkan di `scriipture.config.ts`.
+
+## Anatomi
+
+```ts my-plugin.ts
+import type { Plugin } from "scriipture";
+
+export const noSelfDestruct: Plugin = {
+  name: "no-self-destruct",
+  stage: "validate",
+  run({ solidity, report }) {
+    if (solidity.includes("selfdestruct")) {
+      report.error("selfdestruct is banned by policy");
+    }
+  },
+};
+```
+
+## Daftarkan
+
+```ts scriipture.config.ts
+import { defineConfig } from "scriipture";
+import { noSelfDestruct } from "./my-plugin";
+
+export default defineConfig({
+  plugins: [noSelfDestruct],
+});
+```
+
+## Stage
+
+| Stage | Kapan dijalankan |
+| --- | --- |
+| `parse` | Setelah parsing TS, sebelum codegen. |
+| `emit` | Saat mengeluarkan Solidity. |
+| `validate` | Selama [security pipeline](/concepts/security-pipeline). |
+| `deploy` | Tepat sebelum menyiarkan deploy. |
+
+Lihat juga: [Menulis invariant](/guides/writing-an-invariant).

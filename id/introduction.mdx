@@ -1,0 +1,70 @@
+---
+title: "Pengenalan"
+description: "Tulis smart contract dalam TypeScript. Rilis seperti proyek Node.js pada umumnya."
+---
+
+Scriipture memungkinkan Anda menulis smart contract dalam **TypeScript murni**, bahasa yang sudah Anda gunakan untuk API dan frontend Anda. Tidak ada bahasa baru untuk dipelajari. Tidak ada perkakas baru. Cukup `npm install`, tulis sebuah class, dan deploy.
+
+```bash
+npm install scriipture
+```
+
+## Dirancang untuk developer TypeScript
+
+Jika Anda tahu Node.js, Anda sudah tahu 90% dari Scriipture. Sebuah smart contract hanyalah sebuah class. Method menjadi function yang bisa dipanggil siapa saja. Field class menjadi storage. Itulah seluruh modelnya.
+
+```ts Counter.ts
+import { storage } from "scriipture";
+
+export class Counter {
+  @storage count: bigint = 0n;
+
+  increment(): void {
+    this.count += 1n;
+  }
+}
+```
+
+Scriipture menangani semua hal spesifik blockchain untuk Anda: ia men-generate kode kontrak tingkat rendah, memeriksa bug-bug umum, dan men-deploy melalui browser wallet Anda. Anda tidak pernah harus meninggalkan TypeScript.
+
+## Apa yang Anda dapatkan
+
+<CardGroup cols={2}>
+  <Card title="TypeScript sepenuhnya" icon="code">
+    Editor Anda, linter Anda, type-checker Anda, framework tes Anda. Tanpa bahasa baru, tanpa IDE baru.
+  </Card>
+
+  <Card title="Pemeriksaan keamanan bawaan" icon="shield-check">
+    Setiap build menjalankan 9 pemeriksaan otomatis untuk bug kontrak umum sebelum Anda bisa deploy. Pelajari lebih lanjut di [Pemeriksaan keamanan](/concepts/security-pipeline).
+  </Card>
+
+  <Card title="Deploy dari browser Anda" icon="wallet">
+    Tanda tangani deploy dengan browser wallet seperti MetaMask. Tanpa private key di file `.env`. Lihat [Cara kerja deploy](/concepts/browser-wallet).
+  </Card>
+
+  <Card title="Bekerja di jaringan nyata" icon="network-wired">
+    Dikirim dengan dukungan untuk Ethereum, Base, dan Konstellation. Lihat [Chain yang didukung](/concepts/multi-chain).
+  </Card>
+</CardGroup>
+
+## Baru mengenal smart contract?
+
+Tidak masalah. Berikut versi 30 detiknya:
+
+- Sebuah **smart contract** adalah program yang tinggal di blockchain. Setelah di-deploy, siapa pun dapat memanggil function-nya melalui internet.
+- Sebuah **blockchain** (Ethereum, Base, Konstellation) adalah basis data bersama yang disepakati oleh banyak komputer. Men-deploy kontrak seperti melakukan `POST` kode ke basis data tersebut.
+- Sebuah **wallet** (seperti MetaMask) adalah identitas Anda. Anda menggunakannya untuk menandatangani deploy dan transaksi, sama seperti Anda menggunakan akun Google untuk login.
+
+Itu saja. Sekarang Anda bisa membaca sisa dokumentasinya.
+
+## Langkah berikutnya
+
+<CardGroup cols={2}>
+  <Card title="Instalasi" icon="download" href="/install">
+    Dua perintah dan Anda sudah siap.
+  </Card>
+
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Deploy kontrak pertama Anda dalam sekitar 60 detik.
+  </Card>
+</CardGroup>

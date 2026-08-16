@@ -1,0 +1,39 @@
+---
+title: "Menulis invariant"
+description: "Deklarasikan properti yang harus selalu berlaku dan biarkan Scriipture membuktikannya."
+---
+
+Invariant adalah method boolean yang di-decorate dengan `@invariant`. [Security pipeline](/concepts/security-pipeline) menjalankannya terhadap input simbolik selama `validate`.
+
+## Contoh: total supply cocok dengan balance
+
+<CodeGroup>
+
+```ts MyToken.ts
+import { storage, invariant, Address } from "scriipture";
+
+export class MyToken {
+  @storage totalSupply: bigint = 0n;
+  @storage balanceOf: Map<Address, bigint> = new Map();
+
+  @invariant
+  supplyMatchesBalances(): boolean {
+    let sum = 0n;
+    for (const [, bal] of this.balanceOf) sum += bal;
+    return sum === this.totalSupply;
+  }
+}
+```
+
+```bash Terminal
+$ npx scriipture validate
+✓ supplyMatchesBalances holds across 10,000 traces
+```
+
+</CodeGroup>
+
+## Panduan
+
+- Jaga invariant tetap murni. Baca state, jangan mutasi.
+- Lebih baik beberapa invariant kecil daripada satu yang besar. Kegagalan lebih mudah didiagnosa.
+- Sambungkan seed counter-example kembali ke suite tes Anda agar regresi tidak bisa muncul kembali.

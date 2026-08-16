@@ -1,0 +1,28 @@
+---
+title: "config"
+description: "Die Scriipture-Projektkonfiguration einsehen und bearbeiten."
+---
+
+Liest und bearbeitet `scriipture.config.ts`. Gibt die aufgelöste Konfiguration inklusive Standardwerte aus.
+
+## Verwendung
+
+```bash
+npx scriipture config [subcommand]
+```
+
+## Subcommands
+
+| Subcommand | Beschreibung |
+| --- | --- |
+| `show` | Aufgelöste Konfiguration ausgeben. |
+| `get <key>` | Einen einzelnen Wert lesen. |
+| `set <key> <value>` | Einen Wert schreiben. |
+
+## Beispiel
+
+```bash
+npx scriipture config set optimizer.runs 1000
+```
+
+Ein vollständiges Konfigurationsbeispiel findest du unter [Multi-Chain](/concepts/multi-chain).

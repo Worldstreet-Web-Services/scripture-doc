@@ -1,0 +1,26 @@
+---
+title: "init"
+description: "Initialisez un nouveau projet Scriipture."
+---
+
+Crée un répertoire de projet avec `scriipture.config.ts`, un contrat de démarrage et les scripts npm prêts à l'emploi.
+
+## Utilisation
+
+```bash
+npx scriipture init <project-name> [options]
+```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `--template <name>` | Modèle de démarrage. Par défaut `token`. |
+| `--package-manager <npm\|pnpm\|yarn>` | Gestionnaire de paquets pour l'étape d'installation. |
+| `--no-install` | Ignore l'installation des dépendances. |
+
+## Exemple
+
+```bash
+npx scriipture init my-dao --template governance
+```
