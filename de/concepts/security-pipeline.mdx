@@ -1,6 +1,6 @@
 ---
 title: "Security-Pipeline"
-description: "Die 9 Stufen, die jeder Contract vor dem Deploy durchläuft."
+description: "Die neun Stufen, die jeder Contract vor dem Deploy durchläuft: Parser, Type-Mapping, solc, Slither, Invarianten, Gas, Storage, Bytecode und Pre-Flight."
 ---
 
 Jedes `scriipture build`, `validate` und `deploy` schickt die kompilierte Solidity durch eine 9-stufige Pipeline. Jede Stufe kann den Build zum Scheitern bringen.

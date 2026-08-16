@@ -1,6 +1,6 @@
 ---
 title: "Security pipeline"
-description: "9 gate yang dilewati setiap kontrak sebelum deploy."
+description: "Sembilan gerbang yang dilewati setiap kontrak Scriipture sebelum deploy: parser, type mapping, solc, Slither, invariant, gas, storage, bytecode, dan pre-flight."
 ---
 
 Setiap `scriipture build`, `validate`, dan `deploy` menjalankan Solidity hasil kompilasi melalui pipeline 9 gate. Gate mana pun dapat menggagalkan build.
