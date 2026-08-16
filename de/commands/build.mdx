@@ -1,0 +1,27 @@
+---
+title: "build"
+description: "Transpiliert TypeScript-Contracts nach Solidity und kompiliert mit solc."
+---
+
+End-to-End-Build: Er parst die TS-Quellen, gibt Solidity aus und kompiliert zu Bytecode. Führt die [Security-Pipeline](/concepts/security-pipeline) aus, sofern `--skip-validate` nicht angegeben wird.
+
+## Verwendung
+
+```bash
+npx scriipture build [options]
+```
+
+## Optionen
+
+| Flag | Beschreibung |
+| --- | --- |
+| `--out <dir>` | Ausgabeverzeichnis. Standard: `./build`. |
+| `--only <glob>` | Nur passende Contracts bauen. |
+| `--skip-validate` | Security-Pipeline überspringen. |
+| `--optimizer <n>` | `solc`-Optimizer-Runs. Standard: `200`. |
+
+## Beispiel
+
+```bash
+npx scriipture build --optimizer 1000
+```

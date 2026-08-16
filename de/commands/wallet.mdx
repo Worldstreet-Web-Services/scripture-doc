@@ -1,0 +1,30 @@
+---
+title: "wallet"
+description: "Lokale Keystores verwalten."
+---
+
+Erstellt, importiert und listet verschlüsselte Keystores auf, die von [`deploy --keystore`](/commands/deploy) verwendet werden.
+
+## Subcommands
+
+### `create`
+
+```bash
+npx scriipture wallet create <name>
+```
+
+### `import`
+
+```bash
+npx scriipture wallet import <name> --private-key <hex>
+```
+
+### `list`
+
+```bash
+npx scriipture wallet list
+```
+
+<Warning>
+  Keystores sind im Ruhezustand verschlüsselt, sollten aber trotzdem als sensibel behandelt werden. Bevorzuge für alles mit echtem Wert Deploys über die [Browser-Wallet](/concepts/browser-wallet).
+</Warning>

@@ -1,0 +1,32 @@
+---
+title: "Dépannage"
+description: "Problèmes courants et comment les résoudre."
+---
+
+<AccordionGroup>
+  <Accordion title="`solc` introuvable">
+    Exécutez `npx scriipture doctor --fix` pour installer un `solc` compatible. Voir [`doctor`](/commands/doctor).
+  </Accordion>
+
+  <Accordion title="Slither est manquant">
+    Installez-le avec `pipx install slither-analyzer` ou exécutez `doctor --fix`. Sans Slither, la porte d'analyse statique est ignorée avec un avertissement.
+  </Accordion>
+
+  <Accordion title="`localhost:7654` est déjà utilisé">
+    Un autre processus est lié au port du pont. Utilisez `scriipture deploy --browser --bridge-port 7655`. Voir [Portefeuille de navigateur](/concepts/browser-wallet).
+  </Accordion>
+
+  <Accordion title="Un invariant échoue avec un contre-exemple">
+    Le pipeline affiche la trace d'entrée qui a cassé votre invariant. Reproduisez avec `scriipture test --seed <n>` où `n` est la graine issue de la sortie d'échec. Voir [Écrire un invariant](/guides/writing-an-invariant).
+  </Accordion>
+
+  <Accordion title="Le bytecode déployé ne correspond pas à verify">
+    Presque toujours une divergence d'optimiseur ou de `via-ir`. Relancez [`compile`](/commands/compile) avec exactement les mêmes options qu'au déploiement, puis [`verify`](/commands/verify) à nouveau.
+  </Accordion>
+
+  <Accordion title="`@onlyOwner` compile mais revert à l'appel">
+    Vous avez appelé depuis un compte qui n'est pas le déployeur. `Ownable(msg.sender)` est défini dans le constructeur. Transférez la propriété avec `transferOwnership(newOwner)` ou déployez depuis le compte administrateur prévu.
+  </Accordion>
+</AccordionGroup>
+
+Toujours bloqué ? Ouvrez un ticket dans le [dépôt Scriipture](https://github.com/Worldstreet-Web-Services/scripture/issues).

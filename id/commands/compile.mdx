@@ -1,0 +1,26 @@
+---
+title: "compile"
+description: "Menjalankan hanya langkah kompilasi Solidity."
+---
+
+Melewati parsing TS dan validasi. Berguna untuk beriterasi pada Solidity yang diedit manual atau kontrak pihak ketiga.
+
+## Penggunaan
+
+```bash
+npx scriipture compile <path> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--solc <version>` | Kunci versi `solc` tertentu. |
+| `--optimizer <n>` | Jumlah run optimizer. |
+| `--via-ir` | Aktifkan pipeline Yul IR. |
+
+## Contoh
+
+```bash
+npx scriipture compile contracts/MyToken.sol --via-ir
+```

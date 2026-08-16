@@ -1,0 +1,26 @@
+---
+title: "compile"
+description: "Exécute uniquement l'étape de compilation Solidity."
+---
+
+Ignore l'analyse TS et la validation. Utile pour itérer sur du Solidity édité à la main ou sur des contrats tiers.
+
+## Utilisation
+
+```bash
+npx scriipture compile <path> [options]
+```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `--solc <version>` | Épingle une version spécifique de `solc`. |
+| `--optimizer <n>` | Exécutions de l'optimiseur. |
+| `--via-ir` | Active le pipeline Yul IR. |
+
+## Exemple
+
+```bash
+npx scriipture compile contracts/MyToken.sol --via-ir
+```

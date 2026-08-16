@@ -1,0 +1,22 @@
+---
+title: "verify-source"
+description: "Quellcode zur öffentlichen Verifizierung an einen Block-Explorer übermitteln."
+---
+
+Lädt die generierte Solidity, die Compiler-Einstellungen und die Konstruktor-Argumente an einen Block-Explorer (Etherscan, Basescan, Blockscout) hoch.
+
+## Verwendung
+
+```bash
+npx scriipture verify-source <address> --chain <chain> [options]
+```
+
+## Optionen
+
+| Flag | Beschreibung |
+| --- | --- |
+| `--explorer <name>` | Explorer, an den übermittelt wird. Wird aus der Chain automatisch erkannt. |
+| `--api-key <key>` | Explorer-API-Key. Kann auch aus der Umgebung gelesen werden. |
+| `--contract <name>` | Contract-Name, falls das Artefakt mehrere enthält. |
+
+Eine vollständige Anleitung findest du unter [Auf Basescan verifizieren](/guides/verifying-on-basescan).

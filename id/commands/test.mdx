@@ -1,0 +1,26 @@
+---
+title: "test"
+description: "Jalankan suite tes kontrak."
+---
+
+Menjalankan tes yang didefinisikan di `tests/` terhadap EVM yang di-fork. Tes adalah TypeScript murni dengan API `describe` / `it`.
+
+## Penggunaan
+
+```bash
+npx scriipture test [pattern] [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--fork <chain>` | Fork chain tertentu untuk tes. |
+| `--coverage` | Keluarkan laporan coverage. |
+| `--gas` | Keluarkan penggunaan gas per function. |
+
+## Contoh
+
+```bash
+npx scriipture test MyToken --gas
+```

@@ -1,0 +1,43 @@
+---
+title: "Portefeuille de navigateur"
+description: "Comment `scriipture deploy --browser` signe les transactions avec MetaMask."
+---
+
+`scriipture deploy --browser` déploie sans jamais toucher à une clé privée sur le disque. Il démarre un serveur HTTP local éphémère, ouvre une page de signature dans votre navigateur et attend que votre portefeuille signe la transaction.
+
+## Flux
+
+<Steps>
+  <Step title="La CLI démarre le pont">
+    Un serveur local démarre sur `http://localhost:7654` et reste actif pendant environ 30 secondes.
+  </Step>
+  <Step title="Le navigateur s'ouvre">
+    Scriipture ouvre `http://localhost:7654` dans votre navigateur par défaut. La page affiche la charge utile du déploiement (bytecode, chaîne, arguments).
+  </Step>
+  <Step title="Vous signez">
+    Cliquez sur **Sign and send** dans votre portefeuille. MetaMask, Rabby, Frame, Coinbase Wallet et tout fournisseur EIP-1193 fonctionnent.
+  </Step>
+  <Step title="La CLI reçoit le reçu">
+    Le navigateur renvoie le reçu à la CLI, le pont s'arrête et l'adresse déployée s'affiche.
+  </Step>
+</Steps>
+
+```bash
+npx scriipture deploy --browser --chain base-sepolia
+```
+
+<Info>
+  Le pont ne fonctionne que pendant un déploiement. Il se lie à `127.0.0.1` et s'arrête après réception du reçu ou après environ 30 secondes.
+</Info>
+
+<Warning>
+  Si `localhost:7654` est déjà utilisé, utilisez `--bridge-port <port>` pour le remplacer.
+</Warning>
+
+## Quand l'utiliser
+
+- Vous êtes sur un poste de travail avec MetaMask et vous ne voulez pas de clé chaude sur le disque.
+- Vous déployez depuis un Ledger ou un Trezor via MetaMask.
+- Vous êtes en pair-programming avec un coéquipier et souhaitez qu'il approuve la transaction.
+
+Pour les déploiements en CI ou par script, utilisez plutôt [`deploy`](/commands/deploy) avec un keystore.

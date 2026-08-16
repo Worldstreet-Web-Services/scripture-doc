@@ -1,0 +1,28 @@
+---
+title: "config"
+description: "Periksa dan edit konfigurasi proyek Scriipture."
+---
+
+Membaca dan mengedit `scriipture.config.ts`. Mencetak konfigurasi yang telah diresolusi termasuk default-nya.
+
+## Penggunaan
+
+```bash
+npx scriipture config [subcommand]
+```
+
+## Subcommand
+
+| Subcommand | Deskripsi |
+| --- | --- |
+| `show` | Cetak konfigurasi yang diresolusi. |
+| `get <key>` | Baca satu nilai. |
+| `set <key> <value>` | Tulis sebuah nilai. |
+
+## Contoh
+
+```bash
+npx scriipture config set optimizer.runs 1000
+```
+
+Lihat [Multi-chain](/concepts/multi-chain) untuk contoh konfigurasi lengkap.

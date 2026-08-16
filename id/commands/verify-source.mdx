@@ -1,0 +1,22 @@
+---
+title: "verify-source"
+description: "Kirim source ke block explorer untuk verifikasi publik."
+---
+
+Mengunggah Solidity yang di-generate, pengaturan compiler, dan argumen constructor ke sebuah block explorer (Etherscan, Basescan, Blockscout).
+
+## Penggunaan
+
+```bash
+npx scriipture verify-source <address> --chain <chain> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--explorer <name>` | Explorer yang dituju. Terdeteksi otomatis dari chain. |
+| `--api-key <key>` | API key explorer. Juga dibaca dari env. |
+| `--contract <name>` | Nama kontrak jika ada beberapa dalam artefak. |
+
+Lihat [Verifikasi di Basescan](/guides/verifying-on-basescan) untuk panduan lengkap.

@@ -1,0 +1,97 @@
+---
+title: "Decorators"
+description: "Wie TypeScript-Decorators auf Solidity-Modifier, Sichtbarkeit und Basis-Contracts abgebildet werden."
+---
+
+Scriipture-Decorators deklarieren Modifier, Sichtbarkeit, Storage und Vererbung. Jeder Decorator ist auf ein bestimmtes Solidity-Konstrukt abgebildet, und der Transpiler injiziert die erforderlichen Imports sowie die Konstruktor-Verdrahtung.
+
+## `@onlyOwner`
+
+<CodeGroup>
+
+```ts MyToken.ts
+import { onlyOwner, Address } from "scriipture";
+
+export class MyToken {
+  @onlyOwner
+  mint(to: Address, amount: bigint): void { /* … */ }
+}
+```
+
+```solidity MyToken.sol
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MyToken is Ownable {
+    constructor() Ownable(msg.sender) {}
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        /* … */
+    }
+}
+```
+
+</CodeGroup>
+
+Scriipture importiert OpenZeppelins `Ownable`, ergänzt `is Ownable` und injiziert `Ownable(msg.sender)` in den Konstruktor.
+
+## `@view`
+
+Markiert eine Funktion als `view` (keine State-Mutation).
+
+<CodeGroup>
+
+```ts Reader.ts
+export class Reader {
+  @view
+  balanceOf(user: Address): bigint {
+    return this.balances.get(user) ?? 0n;
+  }
+}
+```
+
+```solidity Reader.sol
+function balanceOf(address user) public view returns (uint256) {
+    return balances[user];
+}
+```
+
+</CodeGroup>
+
+## `@payable`
+
+Erlaubt einer Funktion den Empfang von Ether.
+
+<CodeGroup>
+
+```ts Vault.ts
+export class Vault {
+  @payable
+  deposit(): void { /* msg.value credited to sender */ }
+}
+```
+
+```solidity Vault.sol
+function deposit() public payable { /* … */ }
+```
+
+</CodeGroup>
+
+## `@nonReentrant`
+
+Schützt vor Reentrancy mithilfe von OpenZeppelins `ReentrancyGuard`.
+
+## `@storage`
+
+Deklariert eine persistente State-Variable. Klassenfelder ohne `@storage` existieren nur zur Compile-Zeit.
+
+## `@assembly`
+
+Kennzeichnet einen Funktionskörper als Inline-Yul/Assembly. Wird unverändert durchgereicht.
+
+## `@invariant`
+
+Deklariert eine Contract-weite Invariante, die von der [Security-Pipeline](/concepts/security-pipeline) geprüft wird. Siehe [Eine Invariante schreiben](/guides/writing-an-invariant).
+
+<Note>
+  Der vollständige Quellcode zu jedem Decorator liegt im [Scriipture-Repo](https://github.com/Worldstreet-Web-Services/scripture/blob/main/src/).
+</Note>

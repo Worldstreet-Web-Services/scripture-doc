@@ -1,0 +1,44 @@
+---
+title: "Écrire un plugin"
+description: "Étendez le transpileur ou le pipeline de sécurité avec votre propre logique."
+---
+
+Les plugins peuvent ajouter de nouveaux décorateurs, de nouvelles portes du pipeline ou de nouvelles générations de code. Enregistrez-les dans `scriipture.config.ts`.
+
+## Anatomie
+
+```ts my-plugin.ts
+import type { Plugin } from "scriipture";
+
+export const noSelfDestruct: Plugin = {
+  name: "no-self-destruct",
+  stage: "validate",
+  run({ solidity, report }) {
+    if (solidity.includes("selfdestruct")) {
+      report.error("selfdestruct is banned by policy");
+    }
+  },
+};
+```
+
+## Enregistrement
+
+```ts scriipture.config.ts
+import { defineConfig } from "scriipture";
+import { noSelfDestruct } from "./my-plugin";
+
+export default defineConfig({
+  plugins: [noSelfDestruct],
+});
+```
+
+## Étapes
+
+| Étape | Quand elle s'exécute |
+| --- | --- |
+| `parse` | Après l'analyse TS, avant la génération de code. |
+| `emit` | Pendant l'émission du Solidity. |
+| `validate` | Pendant le [pipeline de sécurité](/concepts/security-pipeline). |
+| `deploy` | Juste avant la diffusion d'un déploiement. |
+
+Voir aussi : [Écrire un invariant](/guides/writing-an-invariant).

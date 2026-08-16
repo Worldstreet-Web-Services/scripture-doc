@@ -1,0 +1,32 @@
+---
+title: "Troubleshooting"
+description: "Häufige Probleme und wie du sie behebst."
+---
+
+<AccordionGroup>
+  <Accordion title="`solc` nicht gefunden">
+    Führe `npx scriipture doctor --fix` aus, um eine kompatible `solc`-Version zu installieren. Siehe [`doctor`](/commands/doctor).
+  </Accordion>
+
+  <Accordion title="Slither fehlt">
+    Installiere es mit `pipx install slither-analyzer` oder führe `doctor --fix` aus. Ohne Slither wird die Stufe für statische Analyse mit einer Warnung übersprungen.
+  </Accordion>
+
+  <Accordion title="`localhost:7654` ist bereits belegt">
+    Ein anderer Prozess ist an den Bridge-Port gebunden. Verwende `scriipture deploy --browser --bridge-port 7655`. Siehe [Browser-Wallet](/concepts/browser-wallet).
+  </Accordion>
+
+  <Accordion title="Invariante schlägt mit einem Gegenbeispiel fehl">
+    Die Pipeline gibt den Input-Trace aus, der deine Invariante gebrochen hat. Reproduziere ihn mit `scriipture test --seed <n>`, wobei `n` der Seed aus der Fehlerausgabe ist. Siehe [Eine Invariante schreiben](/guides/writing-an-invariant).
+  </Accordion>
+
+  <Accordion title="Deployter Bytecode stimmt bei verify nicht überein">
+    Fast immer eine Diskrepanz beim Optimizer oder bei `via-ir`. Führe [`compile`](/commands/compile) mit exakt denselben Flags erneut aus, mit denen du deployt hast, und danach nochmals [`verify`](/commands/verify).
+  </Accordion>
+
+  <Accordion title="`@onlyOwner` kompiliert, aber revertiert beim Aufruf">
+    Du hast von einem Account aus aufgerufen, der nicht der Deployer ist. `Ownable(msg.sender)` wird im Konstruktor gesetzt. Übertrage den Besitz mit `transferOwnership(newOwner)` oder deploye aus dem vorgesehenen Admin-Account.
+  </Accordion>
+</AccordionGroup>
+
+Immer noch nicht weiter? Öffne ein Issue im [Scriipture-Repo](https://github.com/Worldstreet-Web-Services/scripture/issues).

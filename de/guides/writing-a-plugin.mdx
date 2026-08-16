@@ -1,0 +1,44 @@
+---
+title: "Ein Plugin schreiben"
+description: "Erweitere den Transpiler oder die Security-Pipeline mit eigener Logik."
+---
+
+Plugins können neue Decorators, neue Pipeline-Stufen oder neue Codegen-Schritte hinzufügen. Registriere sie in `scriipture.config.ts`.
+
+## Aufbau
+
+```ts my-plugin.ts
+import type { Plugin } from "scriipture";
+
+export const noSelfDestruct: Plugin = {
+  name: "no-self-destruct",
+  stage: "validate",
+  run({ solidity, report }) {
+    if (solidity.includes("selfdestruct")) {
+      report.error("selfdestruct is banned by policy");
+    }
+  },
+};
+```
+
+## Registrieren
+
+```ts scriipture.config.ts
+import { defineConfig } from "scriipture";
+import { noSelfDestruct } from "./my-plugin";
+
+export default defineConfig({
+  plugins: [noSelfDestruct],
+});
+```
+
+## Stages
+
+| Stage | Wann sie läuft |
+| --- | --- |
+| `parse` | Nach dem TS-Parsing, vor dem Codegen. |
+| `emit` | Während des Emittierens von Solidity. |
+| `validate` | Während der [Security-Pipeline](/concepts/security-pipeline). |
+| `deploy` | Unmittelbar vor dem Broadcast eines Deploys. |
+
+Siehe auch: [Eine Invariante schreiben](/guides/writing-an-invariant).

@@ -1,0 +1,24 @@
+---
+title: "secure-deploy"
+description: "Deploy dengan jejak audit lengkap: attestation bytecode, bukti invariant, dan metadata yang ditandatangani."
+---
+
+Menjalankan [`deploy`](/commands/deploy) dan sebagai tambahan menghasilkan bundel audit: hash bytecode, laporan `slither`, bukti invariant, dan sebuah metadata JSON yang ditandatangani dan disematkan ke IPFS.
+
+## Penggunaan
+
+```bash
+npx scriipture secure-deploy <contract> --chain <chain> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--browser` | Tanda tangan via browser wallet. |
+| `--ipfs-gateway <url>` | Sematkan metadata ke gateway IPFS khusus. |
+| `--sign-with <key>` | Tanda tangani bundel metadata dengan key tertentu. |
+
+<Note>
+  Gunakan `secure-deploy` untuk produksi. Gunakan [`deploy`](/commands/deploy) untuk testnet dan iterasi.
+</Note>

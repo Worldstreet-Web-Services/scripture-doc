@@ -1,0 +1,41 @@
+---
+title: "Alle Befehle"
+description: "Jeder CLI-Subcommand auf einen Blick."
+---
+
+Schnellindex jedes Scriipture-CLI-Subcommands. Über die Links gelangst du zu den vollständigen Optionslisten.
+
+| Befehl | Zweck |
+| --- | --- |
+| [`doctor`](/commands/doctor) | Toolchain prüfen und optional fehlende Komponenten installieren. |
+| [`init`](/commands/init) | Ein neues Scriipture-Projekt anlegen. |
+| [`build`](/commands/build) | TS zu Solidity transpilieren und kompilieren. |
+| [`validate`](/commands/validate) | Die 9-stufige Security-Pipeline ausführen. |
+| [`verify`](/commands/verify) | On-Chain-Bytecode gegen ein lokales Artefakt vergleichen. |
+| [`compile`](/commands/compile) | Nur den Solidity-Kompilierungsschritt ausführen. |
+| [`deploy`](/commands/deploy) | Einen kompilierten Contract deployen. |
+| [`secure-deploy`](/commands/secure-deploy) | Deploy mit vollständigem Audit-Trail. |
+| [`verify-source`](/commands/verify-source) | Quellcode an einen Block-Explorer übermitteln. |
+| [`audit`](/commands/audit) | Menschenlesbaren Audit-Report erzeugen. |
+| [`audit-pack`](/commands/audit-pack) | Alles bündeln, was ein Auditor benötigt. |
+| [`gasdiff`](/commands/gasdiff) | Gas-Verbrauch zwischen zwei Builds vergleichen. |
+| [`test`](/commands/test) | Die Contract-Testsuite ausführen. |
+| [`trace`](/commands/trace) | Eine bestimmte Transaktion abspielen und inspizieren. |
+| [`wallet`](/commands/wallet) | Lokale Keystores verwalten. |
+| [`config`](/commands/config) | Projektkonfiguration einsehen und bearbeiten. |
+
+## Globale Flags
+
+Für jeden Befehl verfügbar:
+
+| Flag | Beschreibung |
+| --- | --- |
+| `--help` | Hilfe für den Befehl anzeigen. |
+| `--version` | Installierte Scriipture-Version ausgeben. |
+| `--json` | Maschinenlesbare Ausgabe, sofern unterstützt. |
+| `--verbose` | Zusätzliches Logging. |
+| `--cwd <path>` | In einem anderen Projektverzeichnis ausführen. |
+
+<Note>
+  Diese Seite ist eine Übersicht. Auf der Seite jedes Subcommands findest du die vollständige Flag-Liste und Beispiele.
+</Note>

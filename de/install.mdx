@@ -1,0 +1,61 @@
+---
+title: "Installation"
+description: "Zwei Befehle, um Scriipture lokal einzurichten."
+---
+
+Wenn du Node.js installiert hast, bist du nur 90 Sekunden davon entfernt, deinen ersten Contract zu schreiben.
+
+## Was du brauchst
+
+- **Node.js 18\+** (prüfe mit `node -v`)
+- **npm**, **pnpm** oder **yarn** – je nachdem, was du bereits verwendest
+
+Das war's. Scriipture installiert alles Weitere, was es benötigt.
+
+## Paket installieren
+
+```bash npm
+npm install scriipture
+```
+
+Oder installiere es global, damit du `scriipture` aus jedem Ordner heraus ausführen kannst:
+
+```bash
+npm install -g scriipture
+```
+
+<Note>
+  Bevorzugst du pnpm oder yarn? `pnpm add scriipture` und `yarn add scriipture` funktionieren genauso.
+</Note>
+
+## Setup-Prüfung ausführen
+
+Scriipture bringt einen `doctor`-Befehl mit, der überprüft, ob dein Rechner bereit ist, und alles Fehlende installiert.
+
+<Steps>
+  <Step title="Fehlendes anzeigen">
+    ```bash
+    npx scriipture doctor
+    ```
+
+    Gibt eine Checkliste der Tools aus, die Scriipture unter der Haube verwendet.
+  </Step>
+  <Step title="Automatisch beheben">
+    ```bash
+    npx scriipture doctor --fix
+    ```
+
+    Installiert die fehlenden Komponenten für dich. Kann bedenkenlos mehrfach ausgeführt werden.
+  </Step>
+  <Step title="Bestätigen">
+    Führe `npx scriipture doctor` erneut aus. Jede Zeile sollte grün sein.
+  </Step>
+</Steps>
+
+<Check>
+  Du bist startklar. Gehe zum [Quickstart](/quickstart), um deinen ersten Contract zu deployen.
+</Check>
+
+<Tip>
+  Du musst nicht wissen, welche Tools `doctor` installiert, um loszulegen. Falls du neugierig bist: Es sind allesamt Standard-Tools für Smart Contracts (ein Compiler und ein statischer Analyzer). Wir nutzen sie, damit du es nicht musst.
+</Tip>

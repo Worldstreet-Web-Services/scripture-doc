@@ -1,0 +1,23 @@
+---
+title: "trace"
+description: "Rejouez et inspectez une transaction spécifique."
+---
+
+Récupère une transaction, la rejoue sur un fork local et affiche une trace d'appels lisible avec arguments décodés et raisons de revert.
+
+## Utilisation
+
+```bash
+npx scriipture trace <tx-hash> --chain <chain> [options]
+```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `--json` | Émet la trace au format JSON. |
+| `--depth <n>` | Limite la profondeur d'appel dans la sortie. |
+
+<Tip>
+  Combinez avec [`verify-source`](/commands/verify-source) pour que les noms de fonction décodés apparaissent dans la trace.
+</Tip>

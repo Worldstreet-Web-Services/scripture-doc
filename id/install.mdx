@@ -1,0 +1,61 @@
+---
+title: "Instalasi"
+description: "Dua perintah untuk menyiapkan Scriipture secara lokal."
+---
+
+Jika Anda sudah memasang Node.js, Anda hanya butuh 90 detik untuk menulis kontrak pertama Anda.
+
+## Yang Anda butuhkan
+
+- **Node.js 18\+** (cek dengan `node -v`)
+- **npm**, **pnpm**, atau **yarn**, apa pun yang sudah Anda gunakan
+
+Itu saja. Scriipture akan memasang semua yang dibutuhkannya.
+
+## Pasang paketnya
+
+```bash npm
+npm install scriipture
+```
+
+Atau pasang secara global agar Anda bisa menjalankan `scriipture` dari folder mana pun:
+
+```bash
+npm install -g scriipture
+```
+
+<Note>
+  Lebih suka pnpm atau yarn? `pnpm add scriipture` dan `yarn add scriipture` bekerja dengan cara yang sama.
+</Note>
+
+## Jalankan pemeriksaan setup
+
+Scriipture menyertakan perintah `doctor` yang memverifikasi mesin Anda siap dan memasang apa pun yang kurang.
+
+<Steps>
+  <Step title="Lihat apa yang kurang">
+    ```bash
+    npx scriipture doctor
+    ```
+
+    Mencetak daftar periksa alat-alat yang digunakan Scriipture di balik layar.
+  </Step>
+  <Step title="Perbaikan otomatis">
+    ```bash
+    npx scriipture doctor --fix
+    ```
+
+    Memasang komponen yang hilang untuk Anda. Aman dijalankan lebih dari sekali.
+  </Step>
+  <Step title="Konfirmasi">
+    Jalankan lagi `npx scriipture doctor`. Setiap baris seharusnya hijau.
+  </Step>
+</Steps>
+
+<Check>
+  Anda sudah siap. Lanjutkan ke [Quickstart](/quickstart) untuk mendeploy kontrak pertama Anda.
+</Check>
+
+<Tip>
+  Anda tidak perlu tahu alat apa yang dipasang oleh `doctor` untuk memulai. Jika Anda penasaran, semuanya adalah perkakas smart-contract standar (sebuah kompiler dan penganalisis statis). Kami yang menggunakannya, Anda tidak perlu.
+</Tip>

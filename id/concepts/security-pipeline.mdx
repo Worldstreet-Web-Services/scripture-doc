@@ -1,0 +1,46 @@
+---
+title: "Security pipeline"
+description: "9 gate yang dilewati setiap kontrak sebelum deploy."
+---
+
+Setiap `scriipture build`, `validate`, dan `deploy` menjalankan Solidity hasil kompilasi melalui pipeline 9 gate. Gate mana pun dapat menggagalkan build.
+
+<Steps>
+  <Step title="1. Parser sanity">
+    Memastikan sumber TypeScript dapat di-parse dan setiap decorator dikenali.
+  </Step>
+  <Step title="2. Type mapping">
+    Memverifikasi setiap tipe TS memiliki pemetaan Solidity yang valid. Lihat [Type mapping](/concepts/type-mapping).
+  </Step>
+  <Step title="3. Kompilasi Solidity">
+    Menjalankan `solc` dengan pengaturan ketat. Warning apa pun diperlakukan sebagai error kecuali di-whitelist.
+  </Step>
+  <Step title="4. Analisis statis Slither">
+    Mendeteksi reentrancy, storage yang tidak diinisialisasi, variabel yang di-shadow, dan 90\+ pola lainnya.
+  </Step>
+  <Step title="5. Pemeriksaan invariant">
+    Menjalankan setiap method `@invariant` terhadap input simbolik. Lihat [Menulis invariant](/guides/writing-an-invariant).
+  </Step>
+  <Step title="6. Gas budget">
+    Memastikan setiap function berada dalam gas budget yang dideklarasikan. Sebanding dengan output `gasdiff` antar build.
+  </Step>
+  <Step title="7. Storage layout diff">
+    Memperingatkan tentang perubahan storage layout yang tidak kompatibel (merusak upgrade).
+  </Step>
+  <Step title="8. Bytecode sanity">
+    Memastikan bytecode yang deterministik antar build dan tidak ada opcode yang mencurigakan.
+  </Step>
+  <Step title="9. Deploy pre-flight">
+    Mensimulasikan constructor di chain yang di-fork dengan parameter chain yang dituju.
+  </Step>
+</Steps>
+
+<Tip>
+  Lewati gate individual dengan `--skip <gate>` untuk iterasi lokal. Deploy produksi selalu menjalankan sembilan-sembilanya.
+</Tip>
+
+Terkait:
+
+- [`validate`](/commands/validate) menjalankan pipeline tanpa men-deploy.
+- [`audit`](/commands/audit) dan [`audit-pack`](/commands/audit-pack) menghasilkan laporan yang siap untuk auditor.
+- [`gasdiff`](/commands/gasdiff) memunculkan regresi gas antar build.

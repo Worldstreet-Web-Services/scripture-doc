@@ -1,0 +1,41 @@
+---
+title: "Semua perintah"
+description: "Setiap subcommand CLI sekilas."
+---
+
+Indeks cepat setiap subcommand CLI Scriipture. Ikuti tautan untuk daftar opsi lengkap.
+
+| Perintah | Tujuan |
+| --- | --- |
+| [`doctor`](/commands/doctor) | Periksa toolchain, opsional pasang komponen yang hilang. |
+| [`init`](/commands/init) | Scaffold proyek Scriipture baru. |
+| [`build`](/commands/build) | Transpile TS ke Solidity dan kompilasi. |
+| [`validate`](/commands/validate) | Jalankan security pipeline 9 gate. |
+| [`verify`](/commands/verify) | Diff bytecode on-chain terhadap artefak lokal. |
+| [`compile`](/commands/compile) | Jalankan hanya langkah kompilasi Solidity. |
+| [`deploy`](/commands/deploy) | Deploy kontrak yang telah dikompilasi. |
+| [`secure-deploy`](/commands/secure-deploy) | Deploy dengan jejak audit lengkap. |
+| [`verify-source`](/commands/verify-source) | Kirim source ke block explorer. |
+| [`audit`](/commands/audit) | Hasilkan laporan audit yang mudah dibaca. |
+| [`audit-pack`](/commands/audit-pack) | Bundel semua yang dibutuhkan auditor. |
+| [`gasdiff`](/commands/gasdiff) | Bandingkan penggunaan gas antara dua build. |
+| [`test`](/commands/test) | Jalankan suite tes kontrak. |
+| [`trace`](/commands/trace) | Putar ulang dan periksa transaksi tertentu. |
+| [`wallet`](/commands/wallet) | Kelola keystore lokal. |
+| [`config`](/commands/config) | Periksa dan edit konfigurasi proyek. |
+
+## Flag global
+
+Tersedia di setiap perintah:
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--help` | Tampilkan bantuan untuk perintah. |
+| `--version` | Cetak versi Scriipture yang terpasang. |
+| `--json` | Keluarkan output yang dapat dibaca mesin jika didukung. |
+| `--verbose` | Log tambahan. |
+| `--cwd <path>` | Jalankan di direktori proyek yang berbeda. |
+
+<Note>
+  Halaman ini adalah ringkasan. Halaman setiap subcommand memiliki daftar flag lengkap dan contoh.
+</Note>

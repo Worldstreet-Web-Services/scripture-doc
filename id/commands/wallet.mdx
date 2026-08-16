@@ -1,0 +1,30 @@
+---
+title: "wallet"
+description: "Kelola keystore lokal."
+---
+
+Buat, impor, dan daftar keystore terenkripsi yang digunakan oleh [`deploy --keystore`](/commands/deploy).
+
+## Subcommand
+
+### `create`
+
+```bash
+npx scriipture wallet create <name>
+```
+
+### `import`
+
+```bash
+npx scriipture wallet import <name> --private-key <hex>
+```
+
+### `list`
+
+```bash
+npx scriipture wallet list
+```
+
+<Warning>
+  Keystore terenkripsi saat disimpan tetapi tetap harus diperlakukan sebagai data sensitif. Lebih baik gunakan deploy dengan [browser wallet](/concepts/browser-wallet) untuk apa pun yang bernilai nyata.
+</Warning>

@@ -1,0 +1,64 @@
+---
+title: "API de la bibliothèque"
+description: "Exports TypeScript pour l'utilisation programmatique du transpileur."
+---
+
+Tout ce que fait la CLI est disponible en tant que bibliothèque. Importez depuis `scriipture`.
+
+```ts
+import {
+  parseContractFiles,
+  emitProgram,
+  validateProgram,
+  optimizeProgram,
+  compileSolidity,
+} from "scriipture";
+```
+
+## `parseContractFiles(paths)`
+
+Analyse un ensemble de fichiers de contrat `.ts` en une représentation intermédiaire.
+
+```ts
+const ir = await parseContractFiles(["contracts/MyToken.ts"]);
+```
+
+**Retourne :** `Program` (IR)
+
+## `emitProgram(program)`
+
+Émet du code source Solidity à partir d'un `Program` IR.
+
+```ts
+const { files } = emitProgram(ir);
+// files: { "MyToken.sol": "contract MyToken { … }" }
+```
+
+## `validateProgram(program, options?)`
+
+Exécute le [pipeline de sécurité à 9 portes](/concepts/security-pipeline) sur un programme.
+
+```ts
+const report = await validateProgram(ir, { skip: ["gas-budget"] });
+if (!report.ok) throw new Error(report.summary);
+```
+
+## `optimizeProgram(program)`
+
+Applique des optimisations au niveau IR (élimination de code mort, repliement de constantes, etc.).
+
+## `compileSolidity(files, options?)`
+
+Compile le Solidity émis avec `solc`.
+
+```ts
+const artifacts = await compileSolidity(files, { optimizer: { runs: 1000 } });
+```
+
+## Types IR
+
+Voir le [répertoire `types/`](https://github.com/Worldstreet-Web-Services/scripture/tree/main/types) pour les définitions complètes des types IR (`Program`, `ContractDecl`, `Function`, `Type`, ...).
+
+<Note>
+  L'API de la bibliothèque est stable au sein d'une version mineure. Les changements cassants incrémentent la version mineure.
+</Note>

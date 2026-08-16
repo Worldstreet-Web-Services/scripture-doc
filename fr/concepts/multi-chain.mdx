@@ -1,0 +1,50 @@
+---
+title: "Chaînes prises en charge"
+description: "Les réseaux sur lesquels Scriipture peut déployer et comment ajouter les vôtres."
+---
+
+Scriipture déploie sur trois réseaux prêts à l'emploi : Ethereum, Base et Konstellation.
+
+## Réseaux intégrés
+
+| Réseau | Alias | Notes |
+| --- | --- | --- |
+| Ethereum | `ethereum`, `sepolia` | Mainnet et testnet Sepolia. |
+| Base | `base`, `base-sepolia` | L2 mainnet de Coinbase et testnet Sepolia. |
+| Konstellation (local) | `konstellation-local` | Fonctionne contre un nœud Konstellation local. Points de terminaison RPC publics à venir. |
+
+Utilisez l'alias avec n'importe quelle commande acceptant `--chain` :
+
+```bash
+npx scriipture deploy --chain base-sepolia --browser
+```
+
+<Info>
+  Konstellation est une nouvelle chaîne actuellement en développement. Pour l'instant, déployez sur un nœud local avec `--chain konstellation-local`. Les points de terminaison publics mainnet et testnet seront ajoutés ici dès qu'ils seront disponibles.
+</Info>
+
+## Configuration Konstellation locale
+
+Pointez Scriipture vers votre nœud Konstellation local :
+
+```ts scriipture.config.ts
+import { defineConfig } from "scriipture";
+
+export default defineConfig({
+  chains: {
+    "konstellation-local": {
+      rpc: "http://127.0.0.1:8545",
+    },
+  },
+});
+```
+
+Puis :
+
+```bash
+npx scriipture deploy --chain konstellation-local --browser
+```
+
+## Ajouter votre propre réseau
+
+Tout RPC compatible EVM peut être ajouté de la même manière. Voir [`config`](/commands/config) pour le schéma de configuration complet.

@@ -1,0 +1,26 @@
+---
+title: "validate"
+description: "Exécutez le pipeline de sécurité à 9 portes sans déployer."
+---
+
+Exécute chaque porte décrite dans [Pipeline de sécurité](/concepts/security-pipeline) et signale les problèmes. Retourne un code de sortie non nul en cas d'échec.
+
+## Utilisation
+
+```bash
+npx scriipture validate [options]
+```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `--skip <gate>` | Ignore une porte spécifique. Répétable. |
+| `--only <gate>` | Exécute uniquement la porte nommée. |
+| `--json` | Émet le rapport au format JSON. |
+
+## Exemple
+
+```bash
+npx scriipture validate --skip gas-budget
+```

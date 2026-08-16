@@ -9,72 +9,270 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
+    "languages": [
       {
-        "group": "Getting Started",
+        "language": "en",
+        "default": true,
         "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
-    "tabs": [
-      {
-        "tab": "Documentation",
-        "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
-              "introduction",
-              "install",
+              "index",
               "quickstart"
             ]
-          },
+          }
+        ],
+        "tabs": [
           {
-            "group": "Concepts",
-            "pages": [
-              "concepts/decorators",
-              "concepts/type-mapping",
-              "concepts/security-pipeline",
-              "concepts/browser-wallet",
-              "concepts/multi-chain"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": [
+                  "introduction",
+                  "install",
+                  "quickstart"
+                ]
+              },
+              {
+                "group": "Concepts",
+                "pages": [
+                  "concepts/decorators",
+                  "concepts/type-mapping",
+                  "concepts/security-pipeline",
+                  "concepts/browser-wallet",
+                  "concepts/multi-chain"
+                ]
+              },
+              {
+                "group": "Commands",
+                "pages": [
+                  "commands/doctor",
+                  "commands/init",
+                  "commands/build",
+                  "commands/validate",
+                  "commands/verify",
+                  "commands/compile",
+                  "commands/deploy",
+                  "commands/secure-deploy",
+                  "commands/verify-source",
+                  "commands/audit",
+                  "commands/audit-pack",
+                  "commands/gasdiff",
+                  "commands/test",
+                  "commands/trace",
+                  "commands/wallet",
+                  "commands/config"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "guides/verifying-on-basescan",
+                  "guides/writing-a-plugin",
+                  "guides/writing-an-invariant",
+                  "guides/troubleshooting"
+                ]
+              },
+              {
+                "group": "Reference",
+                "pages": [
+                  "reference/library-api",
+                  "reference/all-commands"
+                ]
+              }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "language": "fr",
+        "tabs": [
           {
-            "group": "Commands",
-            "pages": [
-              "commands/doctor",
-              "commands/init",
-              "commands/build",
-              "commands/validate",
-              "commands/verify",
-              "commands/compile",
-              "commands/deploy",
-              "commands/secure-deploy",
-              "commands/verify-source",
-              "commands/audit",
-              "commands/audit-pack",
-              "commands/gasdiff",
-              "commands/test",
-              "commands/trace",
-              "commands/wallet",
-              "commands/config"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Prise en main",
+                "pages": [
+                  "fr/introduction",
+                  "fr/install"
+                ]
+              },
+              {
+                "group": "Concepts",
+                "pages": [
+                  "fr/concepts/decorators",
+                  "fr/concepts/type-mapping",
+                  "fr/concepts/security-pipeline",
+                  "fr/concepts/browser-wallet",
+                  "fr/concepts/multi-chain"
+                ]
+              },
+              {
+                "group": "Commandes",
+                "pages": [
+                  "fr/commands/doctor",
+                  "fr/commands/init",
+                  "fr/commands/build",
+                  "fr/commands/validate",
+                  "fr/commands/verify",
+                  "fr/commands/compile",
+                  "fr/commands/deploy",
+                  "fr/commands/secure-deploy",
+                  "fr/commands/verify-source",
+                  "fr/commands/audit",
+                  "fr/commands/audit-pack",
+                  "fr/commands/gasdiff",
+                  "fr/commands/test",
+                  "fr/commands/trace",
+                  "fr/commands/wallet",
+                  "fr/commands/config"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "fr/guides/verifying-on-basescan",
+                  "fr/guides/writing-a-plugin",
+                  "fr/guides/writing-an-invariant",
+                  "fr/guides/troubleshooting"
+                ]
+              },
+              {
+                "group": "Référence",
+                "pages": [
+                  "fr/reference/library-api",
+                  "fr/reference/all-commands"
+                ]
+              }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "language": "id",
+        "tabs": [
           {
-            "group": "Guides",
-            "pages": [
-              "guides/verifying-on-basescan",
-              "guides/writing-a-plugin",
-              "guides/writing-an-invariant",
-              "guides/troubleshooting"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Memulai",
+                "pages": [
+                  "id/introduction",
+                  "id/install"
+                ]
+              },
+              {
+                "group": "Konsep",
+                "pages": [
+                  "id/concepts/decorators",
+                  "id/concepts/type-mapping",
+                  "id/concepts/security-pipeline",
+                  "id/concepts/browser-wallet",
+                  "id/concepts/multi-chain"
+                ]
+              },
+              {
+                "group": "Perintah",
+                "pages": [
+                  "id/commands/doctor",
+                  "id/commands/init",
+                  "id/commands/build",
+                  "id/commands/validate",
+                  "id/commands/verify",
+                  "id/commands/compile",
+                  "id/commands/deploy",
+                  "id/commands/secure-deploy",
+                  "id/commands/verify-source",
+                  "id/commands/audit",
+                  "id/commands/audit-pack",
+                  "id/commands/gasdiff",
+                  "id/commands/test",
+                  "id/commands/trace",
+                  "id/commands/wallet",
+                  "id/commands/config"
+                ]
+              },
+              {
+                "group": "Panduan",
+                "pages": [
+                  "id/guides/verifying-on-basescan",
+                  "id/guides/writing-a-plugin",
+                  "id/guides/writing-an-invariant",
+                  "id/guides/troubleshooting"
+                ]
+              },
+              {
+                "group": "Referensi",
+                "pages": [
+                  "id/reference/library-api",
+                  "id/reference/all-commands"
+                ]
+              }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "tabs": [
           {
-            "group": "Reference",
-            "pages": [
-              "reference/library-api",
-              "reference/all-commands"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Erste Schritte",
+                "pages": [
+                  "de/introduction",
+                  "de/install"
+                ]
+              },
+              {
+                "group": "Konzepte",
+                "pages": [
+                  "de/concepts/decorators",
+                  "de/concepts/type-mapping",
+                  "de/concepts/security-pipeline",
+                  "de/concepts/browser-wallet",
+                  "de/concepts/multi-chain"
+                ]
+              },
+              {
+                "group": "Befehle",
+                "pages": [
+                  "de/commands/doctor",
+                  "de/commands/init",
+                  "de/commands/build",
+                  "de/commands/validate",
+                  "de/commands/verify",
+                  "de/commands/compile",
+                  "de/commands/deploy",
+                  "de/commands/secure-deploy",
+                  "de/commands/verify-source",
+                  "de/commands/audit",
+                  "de/commands/audit-pack",
+                  "de/commands/gasdiff",
+                  "de/commands/test",
+                  "de/commands/trace",
+                  "de/commands/wallet",
+                  "de/commands/config"
+                ]
+              },
+              {
+                "group": "Anleitungen",
+                "pages": [
+                  "de/guides/verifying-on-basescan",
+                  "de/guides/writing-a-plugin",
+                  "de/guides/writing-an-invariant",
+                  "de/guides/troubleshooting"
+                ]
+              },
+              {
+                "group": "Referenz",
+                "pages": [
+                  "de/reference/library-api",
+                  "de/reference/all-commands"
+                ]
+              }
             ]
           }
         ]

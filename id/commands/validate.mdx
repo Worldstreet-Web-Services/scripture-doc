@@ -1,0 +1,26 @@
+---
+title: "validate"
+description: "Jalankan pipeline keamanan 9 gate tanpa men-deploy."
+---
+
+Menjalankan setiap gate yang dijelaskan di [Security pipeline](/concepts/security-pipeline) dan melaporkan masalah. Keluar dengan kode non-zero jika gagal.
+
+## Penggunaan
+
+```bash
+npx scriipture validate [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--skip <gate>` | Lewati gate tertentu. Dapat diulang. |
+| `--only <gate>` | Jalankan hanya gate yang disebutkan. |
+| `--json` | Keluarkan laporan sebagai JSON. |
+
+## Contoh
+
+```bash
+npx scriipture validate --skip gas-budget
+```

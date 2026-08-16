@@ -1,0 +1,64 @@
+---
+title: "API Library"
+description: "Ekspor TypeScript untuk penggunaan transpiler secara programatik."
+---
+
+Semua yang dilakukan CLI tersedia sebagai library. Impor dari `scriipture`.
+
+```ts
+import {
+  parseContractFiles,
+  emitProgram,
+  validateProgram,
+  optimizeProgram,
+  compileSolidity,
+} from "scriipture";
+```
+
+## `parseContractFiles(paths)`
+
+Parse sekumpulan file kontrak `.ts` menjadi representasi antara.
+
+```ts
+const ir = await parseContractFiles(["contracts/MyToken.ts"]);
+```
+
+**Return:** `Program` (IR)
+
+## `emitProgram(program)`
+
+Keluarkan source Solidity dari IR `Program`.
+
+```ts
+const { files } = emitProgram(ir);
+// files: { "MyToken.sol": "contract MyToken { … }" }
+```
+
+## `validateProgram(program, options?)`
+
+Jalankan [security pipeline 9 gate](/concepts/security-pipeline) terhadap sebuah program.
+
+```ts
+const report = await validateProgram(ir, { skip: ["gas-budget"] });
+if (!report.ok) throw new Error(report.summary);
+```
+
+## `optimizeProgram(program)`
+
+Terapkan optimisasi tingkat IR (eliminasi kode mati, constant folding, dll.).
+
+## `compileSolidity(files, options?)`
+
+Kompilasi Solidity yang dikeluarkan dengan `solc`.
+
+```ts
+const artifacts = await compileSolidity(files, { optimizer: { runs: 1000 } });
+```
+
+## Tipe IR
+
+Lihat [direktori `types/`](https://github.com/Worldstreet-Web-Services/scripture/tree/main/types) untuk definisi tipe IR lengkap (`Program`, `ContractDecl`, `Function`, `Type`, ...).
+
+<Note>
+  API library stabil dalam versi minor yang sama. Perubahan yang memecah kompatibilitas akan menaikkan versi minor.
+</Note>

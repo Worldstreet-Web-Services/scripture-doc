@@ -1,0 +1,30 @@
+---
+title: "doctor"
+description: "Diagnostique la chaîne d'outils locale et installe éventuellement les éléments manquants."
+---
+
+Vérifie que Node.js, `solc`, `slither` et tout autre analyseur requis par le [pipeline de sécurité](/concepts/security-pipeline) sont présents et à la bonne version.
+
+## Utilisation
+
+```bash
+npx scriipture doctor [options]
+```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `--fix` | Installe les outils manquants. |
+| `--json` | Émet une sortie lisible par machine. |
+| `--verbose` | Affiche la commande brute et le résultat de chaque contrôle. |
+
+## Exemple
+
+```bash
+npx scriipture doctor --fix
+```
+
+<Tip>
+  Exécutez cette commande en CI comme première étape. Elle détecte les analyseurs manquants avant que vous essayiez de compiler.
+</Tip>

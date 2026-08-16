@@ -1,0 +1,23 @@
+---
+title: "trace"
+description: "Putar ulang dan periksa transaksi tertentu."
+---
+
+Mengambil sebuah transaksi, memutar ulang terhadap fork lokal, dan mencetak call trace yang mudah dibaca dengan argumen yang didekode dan alasan revert.
+
+## Penggunaan
+
+```bash
+npx scriipture trace <tx-hash> --chain <chain> [options]
+```
+
+## Opsi
+
+| Flag | Deskripsi |
+| --- | --- |
+| `--json` | Keluarkan trace sebagai JSON. |
+| `--depth <n>` | Batasi kedalaman call pada output. |
+
+<Tip>
+  Kombinasikan dengan [`verify-source`](/commands/verify-source) agar nama function yang didekode muncul di trace.
+</Tip>

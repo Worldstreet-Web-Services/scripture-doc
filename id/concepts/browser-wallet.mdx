@@ -1,0 +1,43 @@
+---
+title: "Browser wallet"
+description: "Bagaimana `scriipture deploy --browser` menandatangani transaksi dengan MetaMask."
+---
+
+`scriipture deploy --browser` men-deploy tanpa pernah menyentuh private key di disk. Ia menjalankan server HTTP lokal singkat, membuka halaman penandatanganan di browser Anda, dan menunggu wallet Anda menandatangani transaksi.
+
+## Alur
+
+<Steps>
+  <Step title="CLI menjalankan bridge">
+    Server lokal dijalankan di `http://localhost:7654` dan tetap aktif selama sekitar 30 detik.
+  </Step>
+  <Step title="Browser terbuka">
+    Scriipture membuka `http://localhost:7654` di browser default Anda. Halaman menampilkan payload deploy (bytecode, chain, args).
+  </Step>
+  <Step title="Anda menandatangani">
+    Klik **Sign and send** di wallet Anda. MetaMask, Rabby, Frame, Coinbase Wallet, dan provider EIP-1193 mana pun bekerja.
+  </Step>
+  <Step title="CLI menerima receipt">
+    Browser mengirimkan receipt kembali ke CLI, bridge dimatikan, dan alamat yang di-deploy dicetak.
+  </Step>
+</Steps>
+
+```bash
+npx scriipture deploy --browser --chain base-sepolia
+```
+
+<Info>
+  Bridge hanya berjalan selama deploy. Ia terikat pada `127.0.0.1` dan mati setelah receipt diterima atau setelah ~30 detik.
+</Info>
+
+<Warning>
+  Jika `localhost:7654` sudah terikat, gunakan `--bridge-port <port>` untuk menggantinya.
+</Warning>
+
+## Kapan menggunakannya
+
+- Anda berada di workstation dengan MetaMask, dan Anda tidak ingin ada hot key di disk.
+- Anda men-deploy dari Ledger atau Trezor via MetaMask.
+- Anda melakukan pair programming dan ingin rekan Anda menyetujui transaksi.
+
+Untuk CI atau deploy dengan script, gunakan [`deploy`](/commands/deploy) dengan keystore sebagai gantinya.

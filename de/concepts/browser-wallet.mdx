@@ -1,0 +1,43 @@
+---
+title: "Browser-Wallet"
+description: "So signiert `scriipture deploy --browser` Transaktionen mit MetaMask."
+---
+
+`scriipture deploy --browser` deployt, ohne dass jemals ein Private Key auf die Festplatte gelangt. Es startet einen kurzlebigen lokalen HTTP-Server, öffnet eine Signierseite in deinem Browser und wartet, bis deine Wallet die Transaktion signiert.
+
+## Ablauf
+
+<Steps>
+  <Step title="CLI startet die Bridge">
+    Ein lokaler Server startet auf `http://localhost:7654` und bleibt etwa 30 Sekunden aktiv.
+  </Step>
+  <Step title="Browser öffnet sich">
+    Scriipture öffnet `http://localhost:7654` in deinem Standardbrowser. Die Seite zeigt das Deploy-Payload (Bytecode, Chain, Args).
+  </Step>
+  <Step title="Du signierst">
+    Klicke in deiner Wallet auf **Sign and send**. MetaMask, Rabby, Frame, Coinbase Wallet und jeder EIP-1193-Provider funktionieren.
+  </Step>
+  <Step title="CLI erhält die Quittung">
+    Der Browser sendet die Quittung an die CLI zurück, die Bridge fährt herunter und die deployte Adresse wird ausgegeben.
+  </Step>
+</Steps>
+
+```bash
+npx scriipture deploy --browser --chain base-sepolia
+```
+
+<Info>
+  Die Bridge läuft nur während eines Deploys. Sie bindet an `127.0.0.1` und fährt herunter, sobald die Quittung eingegangen ist oder nach ca. 30 Sekunden.
+</Info>
+
+<Warning>
+  Falls `localhost:7654` bereits belegt ist, überschreibe den Port mit `--bridge-port <port>`.
+</Warning>
+
+## Wann du sie nutzen solltest
+
+- Du arbeitest an einer Workstation mit MetaMask und willst keinen Hot-Key auf der Festplatte.
+- Du deployst über MetaMask von einem Ledger oder Trezor aus.
+- Du arbeitest mit einer:m Teamkolleg:in im Pair-Modus und möchtest, dass diese Person die Transaktion freigibt.
+
+Für CI- oder skriptgesteuerte Deploys verwende stattdessen [`deploy`](/commands/deploy) mit einem Keystore.

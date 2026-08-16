@@ -1,0 +1,28 @@
+---
+title: "config"
+description: "Inspectez et modifiez la configuration du projet Scriipture."
+---
+
+Lit et modifie `scriipture.config.ts`. Affiche la configuration résolue, y compris les valeurs par défaut.
+
+## Utilisation
+
+```bash
+npx scriipture config [subcommand]
+```
+
+## Sous-commandes
+
+| Sous-commande | Description |
+| --- | --- |
+| `show` | Affiche la configuration résolue. |
+| `get <key>` | Lit une seule valeur. |
+| `set <key> <value>` | Écrit une valeur. |
+
+## Exemple
+
+```bash
+npx scriipture config set optimizer.runs 1000
+```
+
+Voir [Multi-chaînes](/concepts/multi-chain) pour un exemple de configuration complet.

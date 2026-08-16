@@ -1,0 +1,39 @@
+---
+title: "Écrire un invariant"
+description: "Déclarez des propriétés qui doivent toujours être vraies et laissez Scriipture les prouver."
+---
+
+Les invariants sont des méthodes booléennes décorées avec `@invariant`. Le [pipeline de sécurité](/concepts/security-pipeline) les exécute contre des entrées symboliques pendant `validate`.
+
+## Exemple : l'offre totale correspond aux soldes
+
+<CodeGroup>
+
+```ts MyToken.ts
+import { storage, invariant, Address } from "scriipture";
+
+export class MyToken {
+  @storage totalSupply: bigint = 0n;
+  @storage balanceOf: Map<Address, bigint> = new Map();
+
+  @invariant
+  supplyMatchesBalances(): boolean {
+    let sum = 0n;
+    for (const [, bal] of this.balanceOf) sum += bal;
+    return sum === this.totalSupply;
+  }
+}
+```
+
+```bash Terminal
+$ npx scriipture validate
+✓ supplyMatchesBalances holds across 10,000 traces
+```
+
+</CodeGroup>
+
+## Conseils
+
+- Gardez les invariants purs. Lisez l'état, ne le mutez pas.
+- Préférez plusieurs petits invariants à un seul gros. Les échecs sont plus faciles à diagnostiquer.
+- Réinjectez les graines des contre-exemples dans votre suite de tests pour éviter que les régressions ne réapparaissent.
