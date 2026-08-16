@@ -1,6 +1,6 @@
 ---
 title: "Security pipeline"
-description: "The 9 gates every contract passes through before deploy."
+description: "The nine gates every Scriipture contract passes before deploy: parser, type mapping, solc, Slither, invariants, gas, storage, bytecode, and pre-flight."
 ---
 
 Every `scriipture build`, `validate`, and `deploy` runs the compiled Solidity through a 9-gate pipeline. Any gate can fail the build.

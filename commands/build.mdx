@@ -1,6 +1,6 @@
 ---
 title: "build"
-description: "Transpile TypeScript contracts to Solidity and compile with solc."
+description: "Parse TypeScript contract sources, emit Solidity, compile with solc, and run the Scriipture security pipeline in one end-to-end build command."
 ---
 
 End-to-end build: parses TS sources, emits Solidity, and compiles to bytecode. Runs the [security pipeline](/concepts/security-pipeline) unless `--skip-validate` is passed.
